@@ -1,0 +1,43 @@
+/* Estilização geral da navbar */
+.nav {
+    background-color: #483D8B;
+    color: #DCDCDC;
+    align-items: center;     /* Alinha itens verticalmente no centro */
+    width: 100%;             /* Preenche toda a largura */
+    height: 30px;            /* Definindo a altura da navbar. Ajuste conforme necessário */
+    position: fixed;         /* Fixa a navbar no topo */
+    top: 0;                  /* No topo da página */
+    left: 0;                 /* À esquerda da página */
+    z-index: 1000;           /* Para garantir que fique acima de outros elementos */
+    display: flex;           /* Torna a navbar um contêiner flexível */
+    justify-content: center; /* Centraliza os itens da lista horizontalmente */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilização da lista */
+ul.nav {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center; /* Centraliza os itens da lista horizontalmente */
+}
+
+/* Estilização dos itens da lista */
+.nav-item {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+ul.nav .nav-item {
+    margin-right: 20px;
+}
+
+ul.nav .nav-item:last-child {
+    margin-right: 0;
+}
+
+/* Estilização do container da navbar (se ainda for necessário) */
+.navbar-container {
+    width: 100%;             /* Preenche toda a largura */
+}

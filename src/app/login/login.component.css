@@ -1,0 +1,25 @@
+/*.corpo {
+    
+}*/
+
+:host {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.corpo {
+    background-color: rgba(72, 61, 139, 0.8);
+    border-radius: 2%;
+    border: 3px solid #fcb903fd;
+    
+    align-items: center;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.login {
+    max-width: 500px;
+    margin: auto;
+}
