@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RodapeComponent } from './rodape/rodape.component';
+import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RodapeComponent } from './rodape/rodape.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppBootstrapModule
   ],
   providers: [],
   bootstrap: [AppComponent]
