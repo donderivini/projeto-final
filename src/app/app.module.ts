@@ -11,6 +11,7 @@ import { RodapeComponent } from './rodape/rodape.component';
 import { HomeComponent } from './home/home.component';
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 import { FuncionarioService } from './services/funcionario-service.service';
+import { CadastroFuncionarioComponent } from './cadastro-funcionario/cadastro-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FuncionarioService } from './services/funcionario-service.service';
     LoginComponent,
     NavbarComponent,
     RodapeComponent,
-    HomeComponent
+    HomeComponent,
+    CadastroFuncionarioComponent
   ],
   imports: [
     BrowserModule,
