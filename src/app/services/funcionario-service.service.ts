@@ -10,10 +10,14 @@ export class FuncionarioService {
   private funcionarioUrl;
 
   constructor(private http: HttpClient){
-    this.funcionarioUrl= 'http://localhost:8080/funcionarios/1';
+    this.funcionarioUrl= 'http://localhost:8080/funcionarios';
   }
 
-  public findAll(): Observable<Funcionario>{
-    return this.http.get<Funcionario>(this.funcionarioUrl)
+  public findAll(): Observable<any[]>{
+    return this.http.get<any[]>(this.funcionarioUrl)
+  }
+
+  public get(id: Number): Observable<any>{
+    return this.http.get<any>(`${this.funcionarioUrl}/${id}`)
   }
 }
