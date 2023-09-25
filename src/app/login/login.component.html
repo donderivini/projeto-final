@@ -1,17 +1,19 @@
 <app-navbar></app-navbar>
 <div class="corpo">
     <form class="login mb-4">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Endereço de email</label>
+    <div class="form-group"  >
+        <label for="exampleInputEmail1">Login</label>
         <br>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email" [(ngModel)]="funcionario_login.login" name="login">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu login" [(ngModel)]="funcionario_login.login" name="login">
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Senha</label>
         <br>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" [(ngModel)]="funcionario_login.senha" name="senha">
     </div>
-    <button type="submit" class="btn btn-primary" (click)="getLogin()">Enviar</button>
+    <div id="area-botoes" class="d-grid gap-2 mt-2">
+        <button class="btn" type="button">Enviar</button>
+      </div>  
     </form>
 </div>
 <app-rodape></app-rodape>
