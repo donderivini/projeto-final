@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 import { FuncionarioService } from './services/funcionario-service.service';
 import { CadastroFuncionarioComponent } from './cadastro-funcionario/cadastro-funcionario.component';
+import { CadastroEmpresaComponent } from './cadastro-empresa/cadastro-empresa.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CadastroFuncionarioComponent } from './cadastro-funcionario/cadastro-fu
     NavbarComponent,
     RodapeComponent,
     HomeComponent,
-    CadastroFuncionarioComponent
+    CadastroFuncionarioComponent,
+    CadastroEmpresaComponent
   ],
   imports: [
     BrowserModule,

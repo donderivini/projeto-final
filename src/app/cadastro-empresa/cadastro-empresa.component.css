@@ -1,0 +1,51 @@
+.nav{
+    background-color: 	#483D8B;
+    color: #DCDCDC;
+}
+
+body{
+    justify-content: center;
+    align-items: center;
+}
+
+.corpo{
+    margin-top: 100px;
+    width: 45%;
+}
+
+.cadastrar{
+    background-color: rgba(72, 61, 139, 0.8);
+    border-radius: 2%;
+    border: 3px solid #FFD700;
+    align-items: center;
+    font-weight: bold;
+    padding: 30px;
+}
+
+.foto{
+    padding: 20px;
+    align-items: center;
+}
+
+.form-group{
+    color:#DCDCDC;
+}
+
+.btn {
+    margin-left: 130px;
+    background-color: #fcb903fd;
+    font-weight: bold;
+    border: #fcb903fd;
+    text-align: center;
+}
+
+.roda{
+    background-color: #483D8B;
+    text-align:center;
+    bottom: 0;
+    left: 0;
+    padding: 5px 0;
+    position: fixed;
+    width: 100%;
+    color: #DCDCDC;
+}
