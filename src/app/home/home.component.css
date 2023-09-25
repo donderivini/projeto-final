@@ -1,0 +1,48 @@
+h6, h3{
+    color: white;
+}
+
+.area-conteudo {
+    background-color: rgba(71, 61, 139, 0.80);
+    border: 2px solid #fcb903fd;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.area-conteudo span{
+    color: white;
+}
+
+.area-conteudo .btn{
+    color: white;
+    background-color:   rgb(49, 42, 94);
+    border: 1px solid #bce1fffd;
+}
+
+.area-conteudo .btn:hover{
+    color: #fcb903fd;
+}
+
+#area-botoes .btn{
+    background-color: rgb(72, 61, 139);
+    border: 2px solid #fcb903fd;
+    color: white;
+}
+
+#area-botoes .btn:hover{
+    color: #fcb903fd;
+}
+
+#tabela-registros{
+    background-color: rgb(202, 202, 202);
+}
+
+#tabela-registros th{
+    color: rgb(72, 61, 139);
+}
+
+#tabela-registros th, #tabela-registros td{
+    padding-left: 10px;
+    padding-right: 10px;
+}

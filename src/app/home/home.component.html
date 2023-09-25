@@ -1,5 +1,68 @@
 <app-navbar></app-navbar>
 
-
-
+<div class="container">
+  <div class="area-conteudo mt-5 mb-2 px-3">
+    <h3>Nome</h3>
+    <span>Empresa</span><br>
+    <span>Cargo</span>
+  </div>
+  <div class="row align-items-start">
+    <div class="col-3">
+      <div class="px-3 area-conteudo">
+        <h6>FILTROS</h6>
+        <select class="form-select my-2" aria-label="Default select example">
+          <option selected>Todas as frotas</option>
+          <option value="1">Frota 1</option>
+          <option value="2">Frota 2</option>
+          <option value="3">Frota 3</option>
+        </select>
+        <select class="form-select my-2" aria-label="Default select example">
+          <option selected>Todas as categorias</option>
+          <option value="1">LAUDO</option>
+          <option value="2">PROBLEMA</option>
+          <option value="3">SOLUÇÃO</option>
+        </select>
+      </div>
+      <div id="area-botoes" class="d-grid gap-2 mt-2">
+        <button class="btn" type="button">NOVO REGISTRO</button>
+        <button class="btn" type="button">CADASTROS</button>
+      </div>  
+    </div>
+    <div class="col">
+      <div class="px-3 py-2 area-conteudo">
+        <h6>REGISTROS</h6>
+        <table id="tabela-registros" class="table text-left">
+          <thead>
+            <tr>
+              <th style="width:50%">TITULO</th>
+              <th style="width:20%;">FROTA</th>
+              <th>CATEGORIA</th>
+              <th>DATA</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr>
+              <td>Registro 1</td>
+              <td>Frota 1</td>
+              <td>LAUDO</td>
+              <td>25/09/2023</td>
+            </tr>
+            <tr>
+              <td>Registro 2</td>
+              <td>Frota 2</td>
+              <td>PROBLEMA</td>
+              <td>26/09/2023</td>
+            </tr>
+            <tr>
+              <td>Registro 3</td>
+              <td>Frota 3</td>
+              <td>SOLUÇÃO</td>
+              <td>27/09/2023</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 <app-rodape></app-rodape>
