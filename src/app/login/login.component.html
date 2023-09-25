@@ -11,7 +11,9 @@
         <br>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" [(ngModel)]="funcionario_login.senha" name="senha">
     </div>
-    <button type="submit" class="btn btn-primary" (click)="getLogin()">Enviar</button>
+    <div id="area-botoes" class="d-grid gap-2 mt-2">
+        <button class="btn" type="button">Enviar</button>
+      </div>  
     </form>
 </div>
 <app-rodape></app-rodape>

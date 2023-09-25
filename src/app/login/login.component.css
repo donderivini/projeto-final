@@ -9,15 +9,17 @@
     background-color: rgba(72, 61, 139, 0.8);
     border-radius: 10px;
     border: 3px solid #fcb903fd;
-    padding: 30px;
-    text-align: center;
+    padding: 8px 12px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     font-weight: bold;
     color: #fff;
+    width: 25%;
+    min-width: 300px;
 }
 
+
+
 .login {
-    max-width: 500px;
     margin: auto;
 }
 
@@ -50,8 +52,4 @@
 
 .login button:hover {
     background-color: #fcb903;
-}
-
-#area-login label{
-    text-align: left;
 }
