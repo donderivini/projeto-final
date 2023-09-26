@@ -12,15 +12,14 @@ export class LoginComponent {
 
   constructor(private route:Router, private funcionario_service: FuncionarioService){}
 
-  funcLogin: LoginForm = new LoginForm()
+  funcLogin= {login: '', senha: ''}
 
   funcionario: any;
 
   getLogin(){
-    console.log(JSON.stringify(this.funcLogin))
     this.funcionario_service.login(this.funcLogin).subscribe(
       (response) => {
-        console.log('Deu certo ', response)
+        console.log(response)
       }
     )
   }

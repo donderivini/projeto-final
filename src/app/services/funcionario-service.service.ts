@@ -58,7 +58,7 @@ export class FuncionarioService {
     this.http.delete(`${this.funcionarioUrl}/${id}`)
   }
 
-  login(funcionario_login: LoginForm) {
+  login(funcionario_login: any) {
     return this.http.post(`${this.funcionarioUrl}/login`, funcionario_login)
   }
 
