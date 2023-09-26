@@ -19,7 +19,14 @@ export class LoginComponent {
   getLogin(){
     this.funcionario_service.login(this.funcLogin).subscribe(
       (response) => {
-        console.log(response)
+        if (response != null){
+          this.funcionario_service.setFuncionario(response)
+          this.route.navigate(['/home'])
+        }
+        else{
+          this.funcionario_service.setFuncionario(null)
+          window.alert('Login inexistente')
+        }
       }
     )
   }

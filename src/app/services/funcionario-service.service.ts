@@ -9,9 +9,18 @@ import { Observable } from 'rxjs';
 })
 export class FuncionarioService {
   private funcionarioUrl;
+  private funcionario: any
 
   constructor(private http: HttpClient){
     this.funcionarioUrl= 'http://localhost:8080/funcionarios';
+  }
+
+  public setFuncionario(funcionario: any){
+    this.funcionario = funcionario
+  }
+
+  public getFuncionario(): any{
+    return this.funcionario;
   }
 
   public createInterno(funcionario: any): Observable<any>{

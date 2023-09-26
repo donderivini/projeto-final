@@ -10,18 +10,13 @@ import { FuncionarioService } from '../services/funcionario-service.service';
 })
 export class HomeComponent implements OnInit{
 
-  obj: any[] = [];
+  obj: any
 
   constructor(private funcionarioService: FuncionarioService){}
 
   ngOnInit(): void {
-    this.funcionarioService.get(1).subscribe((data: any) => {
-      console.log(data)
-    })
-    // this.funcionarioService.findAll().subscribe((data: any[]) => {
-    //   this.obj = data
-    //   console.log(data)
-    // })
+    this.obj = this.funcionarioService.getFuncionario()
+    this.funcionarioService.setFuncionario(null)
   }
 
 }
