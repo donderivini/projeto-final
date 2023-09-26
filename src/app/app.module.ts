@@ -13,6 +13,7 @@ import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 import { FuncionarioService } from './services/funcionario-service.service';
 import { CadastroFuncionarioComponent } from './cadastro-funcionario/cadastro-funcionario.component';
 import { CadastroEmpresaComponent } from './cadastro-empresa/cadastro-empresa.component';
+import { CadastroFuncionarioInternoComponent } from './cadastro-funcionario-interno/cadastro-funcionario-interno.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CadastroEmpresaComponent } from './cadastro-empresa/cadastro-empresa.co
     RodapeComponent,
     HomeComponent,
     CadastroFuncionarioComponent,
-    CadastroEmpresaComponent
+    CadastroEmpresaComponent,
+    CadastroFuncionarioInternoComponent
   ],
   imports: [
     BrowserModule,

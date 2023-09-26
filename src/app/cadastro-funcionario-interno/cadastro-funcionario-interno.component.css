@@ -1,0 +1,29 @@
+
+.cadastrar{
+    background-color: rgba(72, 61, 139, 0.8);
+    border-radius: 2%;
+    border: 3px solid #FFD700;
+    align-items: center;
+    font-weight: bold;
+    padding: 20px;
+    min-width: 300px;
+}
+
+.cadastrar input{
+    width: 100%;
+
+}
+.form-group{
+    color:#fcb903fd;
+}
+
+.btn {
+    text-align:center;
+    background-color: #fcb903fd;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    
+}
+
