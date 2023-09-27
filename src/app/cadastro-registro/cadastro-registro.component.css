@@ -1,22 +1,14 @@
-
-.cadastrar{
+.formulario {
     background-color: rgba(72, 61, 139, 0.8);
     border-radius: 2%;
     border: 3px solid #fcb903fd;
     align-items: center;
     font-weight: bold;
     padding: 20px;
-    min-width: 500px;
-}
-
-.cadastrar input{
-    width: 100%;
-
-}
-.form-group{
+    width: 500px;
     color:#fcb903fd;
+    font-weight: bold;
 }
-
 .btn {
     text-align:center;
     background-color: #fcb903fd;
