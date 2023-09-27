@@ -16,7 +16,7 @@ body{
 .cadastrar{
     background-color: rgba(72, 61, 139, 0.8);
     border-radius: 2%;
-    border: 3px solid #FFD700;
+    border: 3px solid #fcb903fd;
     align-items: center;
     font-weight: bold;
     padding: 30px;
@@ -28,11 +28,11 @@ body{
 }
 
 .form-group{
-    color:#DCDCDC;
+    color:#fcb903fd;
 }
 
 .btn {
-    margin-left: 130px;
+    margin-top: 10px;
     background-color: #fcb903fd;
     font-weight: bold;
     border: #fcb903fd;

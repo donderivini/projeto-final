@@ -5,15 +5,15 @@
     <form class="cadastrar mb-4">
       <div class="form-group ">
         <label for="inputName">Nome</label>
-        <input type="text" class="form-control" id="inputName" placeholder="">      
+        <input type="text" class="form-control" id="inputName" placeholder="" [(ngModel)]="funcLogin.nome" name="nome">      
         <label for="inputLogin">Login</label>
-        <input type="text" class="form-control" id="inputLogin" placeholder="">      
+        <input type="text" class="form-control" id="inputLogin" placeholder="" [(ngModel)]="funcLogin.login" name="login">      
         <label for="inputPassword4">Senha</label>
-        <input type="password" class="form-control" id="inputPassword4" placeholder="">
+        <input type="password" class="form-control" id="inputPassword4" placeholder="" [(ngModel)]="funcLogin.senha" name="senha">
         <label for="inputEmail4">Email</label>
-        <input type="text" class="form-control" id="inputEmail4" placeholder="">
+        <input type="text" class="form-control" id="inputEmail4" placeholder="" [(ngModel)]="funcLogin.email" name="email">
         <label for="">Empresa</label>      
-        <input class="form-control" list="brow">
+        <input class="form-control" list="brow" [(ngModel)]="funcLogin.empresa" name="empresa">
         <datalist id="brow">
           <option value="aEmpresa 1">
           <option value="aeEmpresa 1">
