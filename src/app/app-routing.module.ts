@@ -7,7 +7,7 @@ import { CadastroEmpresaComponent } from './cadastro-empresa/cadastro-empresa.co
 import { CadastroFuncionarioInternoComponent } from './cadastro-funcionario-interno/cadastro-funcionario-interno.component';
 
 const routes: Routes = [
-  {path:'login',component:LoginComponent},
+  {path:'',component:LoginComponent},
   {path:'home', component:HomeComponent},
   {path: 'cadastro-funcionario', component: CadastroFuncionarioComponent},
   {path: 'cadastro-empresa', component: CadastroEmpresaComponent},

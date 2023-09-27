@@ -28,8 +28,12 @@ th, td{
     padding-bottom: 10px;
 }
 
-.area-conteudo span{
+.area-conteudo p, .area-conteudo a{
     color: white;
+}
+
+.area-conteudo a{
+    text-align: right;
 }
 
 .area-conteudo .btn{

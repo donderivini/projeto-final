@@ -1,15 +1,26 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-  <div class="area-conteudo mt-5 mb-2 px-3">
-    <h3>Nome</h3>
-    <span>Empresa</span><br>
-    <span>Cargo</span>
+  <div class="row area-conteudo mt-5 mb-2 px-3">
+    <div class="col">
+      <h3>{{funcionario.nome}}</h3>
+      <p *ngIf="funcionarioCliente">{{funcionario.empresa.nome}}</p>
+      <p *ngIf="!funcionarioCliente">{{funcionario.cargo}} FHR</p>
+    </div>
+    <div class="col-1">
+      <a href="" (click)="logOut()">SAIR</a>
+    </div>
   </div>
   <div class="row align-items-start">
     <div class="col-3">
       <div class="px-3 area-conteudo">
         <h6>FILTROS</h6>
+        <select *ngIf="!funcionarioCliente" class="form-select my-2" aria-label="Default select example">
+          <option selected>Todas as empresas</option>
+          <option value="1">Empresa 1</option>
+          <option value="2">Empresa 2</option>
+          <option value="3">Empresa 3</option>
+        </select>
         <select class="form-select my-2" aria-label="Default select example">
           <option selected>Todas as frotas</option>
           <option value="1">Frota 1</option>
@@ -25,7 +36,9 @@
       </div>
       <div id="area-botoes" class="d-grid gap-2 mt-2">
         <button class="btn" type="button">NOVO REGISTRO</button>
-        <button class="btn" type="button">CADASTROS</button>
+        <button *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR EMPRESA</button>
+        <button (click)="goToCadastroFuncionario()" *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR USUARIO</button>
+        <button *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR USUARIO FHR</button>
       </div>  
     </div>
     <div class="col">

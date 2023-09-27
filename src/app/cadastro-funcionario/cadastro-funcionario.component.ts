@@ -7,5 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastro-funcionario.component.css']
 })
 export class CadastroFuncionarioComponent {
+  
+  constructor(private router: Router){}
 
+  btCancelar(){
+    this.router.navigate(['/home'])
+  }
 }
