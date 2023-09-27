@@ -14,6 +14,7 @@ import { FuncionarioService } from './services/funcionario-service.service';
 import { CadastroFuncionarioComponent } from './cadastro-funcionario/cadastro-funcionario.component';
 import { CadastroEmpresaComponent } from './cadastro-empresa/cadastro-empresa.component';
 import { CadastroFuncionarioInternoComponent } from './cadastro-funcionario-interno/cadastro-funcionario-interno.component';
+import { CadastroFrotaComponent } from './cadastro-frota/cadastro-frota.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CadastroFuncionarioInternoComponent } from './cadastro-funcionario-inte
     HomeComponent,
     CadastroFuncionarioComponent,
     CadastroEmpresaComponent,
-    CadastroFuncionarioInternoComponent
+    CadastroFuncionarioInternoComponent,
+    CadastroFrotaComponent
   ],
   imports: [
     BrowserModule,
