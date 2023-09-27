@@ -10,7 +10,7 @@ import { LoginForm } from '../model/login-form';
 })
 export class LoginComponent {
 
-  constructor(private route:Router, private funcionario_service: FuncionarioService){}
+  constructor(private router:Router, private funcionario_service: FuncionarioService){}
 
   funcLogin= {login: '', senha: ''}
 
@@ -21,7 +21,7 @@ export class LoginComponent {
       (response) => {
         if (response != null){
           this.funcionario_service.setFuncionario(response)
-          this.route.navigate(['/home'])
+          this.router.navigate(['/home'])
         }
         else{
           this.funcionario_service.setFuncionario(null)

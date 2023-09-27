@@ -26,7 +26,7 @@ export class EmpresaServiceService {
   }
 
   public findAll(){
-    return this.http.get(this.empresaUrl)
+    return this.http.get<any[]>(this.empresaUrl)
   }
 
   public findAllByEstado(estado: string){

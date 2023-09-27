@@ -36,7 +36,7 @@
       </div>
       <div id="area-botoes" class="d-grid gap-2 mt-2">
         <button class="btn" type="button">NOVO REGISTRO</button>
-        <button *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR EMPRESA</button>
+        <button (click)="goToCadastroEmpresa()" *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR EMPRESA</button>
         <button (click)="goToCadastroFuncionario()" *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR USUARIO</button>
         <button *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR USUARIO FHR</button>
       </div>  
