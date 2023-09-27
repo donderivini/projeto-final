@@ -1,3 +1,37 @@
 <app-navbar></app-navbar>
-
+<!-- /*lugar para selecionar empresa ,input text , botão cadastrar,lista de frotas -->
+<br><br><br><br><br><br>
+<form class="formulario mx-auto">
+    <label for="">Selecione a Empresa</label>      
+    <input class="form-control" list="brow">
+        <datalist id="brow">
+            <option value="aEmpresa 1">
+            <option value="aeEmpresa 1">
+            <option value="ewrEmpresa 1">
+            <option value="sdfEmpresa 1">
+            <option value="aEmpresa 2">
+            <option value="aeEmpresa 2">
+            <option value="ewrEmpresa 2">
+            <option value="sdfEmpresa 2">
+            <option value="aEmpresa 3">
+            <option value="aeEmpresa 3">
+            <option value="ewrEmpresa 3">
+            <option value="sdfEmpresa 3">
+        </datalist>
+        <br>
+        <ul class="lista">
+            <h5 class="titulo">Frotas</h5>
+            <li *ngFor="let item of lista">
+                {{item.name}}
+            </li>
+        </ul>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Nome da Frota</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1">
+          </div>
+        <div class="d-grid gap-2 mt-2">
+            <button type="submit" class="btn" >Adicionar Frota</button>
+            <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102);">Cancelar</button>
+        </div>
+</form>
 <app-rodape></app-rodape>
