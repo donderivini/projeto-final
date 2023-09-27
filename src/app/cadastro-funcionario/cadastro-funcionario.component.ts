@@ -1,25 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FuncionarioService } from '../services/funcionario-service.service';
+import { EmpresaServiceService } from '../services/empresa-service.service';
 
 @Component({
   selector: 'app-cadastro-funcionario',
   templateUrl: './cadastro-funcionario.component.html',
   styleUrls: ['./cadastro-funcionario.component.css']
 })
-export class CadastroFuncionarioComponent {
+export class CadastroFuncionarioComponent implements OnInit{
   
-  constructor(private router: Router, private funcionario_service: FuncionarioService){}
+  constructor(private router: Router, private funcionario_service: FuncionarioService, private empresa_service: EmpresaServiceService){}
 
-  btCancelar(){
-    this.router.navigate(['/home'])
+  
+
+  funcLogin= {nome:'', login: '', senha: '', email:'', idEmpresa: ''}
+
+  listaEmpresas: any[]=[]
+
+  ngOnInit(): void {
+      this.empresa_service.findAll().subscribe(
+        (response) => {
+          this.listaEmpresas = response
+        }
+      )
   }
 
-  funcLogin= {nome:'', login: '', senha: '', email:'', empresa:''}
-
-  funcionario: any;
-
-  getCadastro(){
+  cadastrar(){
+    console.log(this.funcLogin)
     this.funcionario_service.createCliente(this.funcLogin).subscribe(
       (response) => {
         if (response != null){
@@ -31,5 +39,9 @@ export class CadastroFuncionarioComponent {
         }
       }
     )
+  }
+  
+  btCancelar(){
+    this.router.navigate(['/home'])
   }
 }
