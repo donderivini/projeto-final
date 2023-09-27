@@ -23,7 +23,7 @@ export class CadastroFuncionarioComponent {
     this.funcionario_service.createCliente(this.funcLogin).subscribe(
       (response) => {
         if (response != null){
-          this.funcionario_service.setFuncionario(response)
+          window.alert('Cadastro feito com sucesso')
           this.router.navigate(['/home'])
         }
         else{

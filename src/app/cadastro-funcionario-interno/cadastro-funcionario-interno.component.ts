@@ -20,7 +20,7 @@ export class CadastroFuncionarioInternoComponent {
     this.funcionario_service.createInterno(this.funcCadastro).subscribe(
       (response) => {
         if (response != null){
-          this.funcionario_service.setFuncionario(response)
+          window.alert('Cadastro feito com sucesso')
           this.router.navigate(['/home'])
         }
         else {
