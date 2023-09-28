@@ -10,6 +10,7 @@ export class RegistrosServiceService {
 
   constructor(private http: HttpClient) { 
     this.registrosUrl= 'http://192.168.15.118:8080/registros';
+    //this.arquivosUrl= 'http://localhost:8080/arquivos';
   }
 
   public get(id: Number): Observable<any>{

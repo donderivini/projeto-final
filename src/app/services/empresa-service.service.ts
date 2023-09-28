@@ -11,6 +11,7 @@ export class EmpresaServiceService {
 
   constructor(private http:HttpClient) { 
     this.empresaUrl = 'http://192.168.15.118:8080/empresas'
+    //this.arquivosUrl= 'http://localhost:8080/arquivos';
   }
 
   public create(empresa: any){

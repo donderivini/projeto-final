@@ -11,6 +11,7 @@ export class FuncionarioService {
 
   constructor(private http: HttpClient){
     this.funcionarioUrl= 'http://192.168.15.118:8080/funcionarios';
+    //this.arquivosUrl= 'http://localhost:8080/arquivos';
   }
 
   public setFuncionario(funcionario: any){
