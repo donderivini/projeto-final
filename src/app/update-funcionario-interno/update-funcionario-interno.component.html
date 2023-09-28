@@ -7,34 +7,31 @@
           <div class="form-row">
             <div class="form-group ">
               <label for="inputName">Nome</label>
-              <input type="text" class="form-control" id="inputName" placeholder="Nome" [(ngModel)]="funcCadastro.nome" name="nome">
-            </div>
-            <div class="form-group ">
-              <label for="inputLogin">Login</label>
-              <input type="text" class="form-control" id="inputLogin" placeholder="Login" [(ngModel)]="funcCadastro.login" name="login">
+              <input type="text" class="form-control" id="inputName" placeholder="Nome" [(ngModel)]="funcUpdate.nome" name="nome">
             </div>
           </div>
           <div class="form-group">
             <label for="inputPassword4">Senha</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Senha" [(ngModel)]="funcCadastro.senha" name="senha">
+            <input type="password" class="form-control" id="inputPassword4" placeholder="Senha" [(ngModel)]="funcUpdate.senha" name="senha">
           </div>
           <div class="form-group">
             <label for="inputEmail4">Email</label>
-            <input type="text" class="form-control" id="inputEmail4" placeholder="Email" [(ngModel)]="funcCadastro.email" name="email">
+            <input type="text" class="form-control" id="inputEmail4" placeholder="Email" [(ngModel)]="funcUpdate.email" name="email">
           </div>
           <div class="form-group">
             <label for="inputCargo">Cargo</label>
-            <select class="form-control" id="inputCargo" [(ngModel)]="funcCadastro.cargo" name="cargo">
+            <select class="form-control" id="inputCargo" [(ngModel)]="funcUpdate.cargo" name="cargo">
               <option value="" selected>-Selecione o cargo-</option>
               <option value="GERENCIA">Gerência</option>
               <option value="MANUTENCAO">Manutenção</option>
             </select>
           </div>
           <div class="d-grid gap-2 mt-3">
-            <button type="submit" class="btn" (click)="setCadastroInterno()">Cadastrar</button>
+            <button type="submit" class="btn" (click)="setUpdateInterno()">Atualizar cadastro</button>
+            <button type="submit" class="btn" (click)="setDeleteInterno()">Deletar usuário</button>
             <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102);">Cancelar</button>
          </div>
         </form>
     </div>
-</div>
+  </div>
 <app-rodape></app-rodape>
