@@ -36,7 +36,11 @@ export class RegistrosServiceService {
     return this.http.get<any[]>(this.registrosUrl)
   }
 
-  public getAllByCategoria(categoria: String): Observable<any[]> {
-    return this.http.delete<any[]>(`${this.registrosUrl}/${categoria}`)
+  public getAllByCategoria(categoria: String) {
+    return this.http.get<any[]>(`${this.registrosUrl}/${categoria}`)
+  }
+
+  public getAllCategorias() {
+    return this.http.get<any[]>(`${this.registrosUrl}/categorias`)
   }
 }

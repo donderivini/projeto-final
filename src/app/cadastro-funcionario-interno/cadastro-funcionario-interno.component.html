@@ -25,12 +25,14 @@
           <div class="form-group">
             <label for="inputCargo">Cargo</label>
             <select class="form-control" id="inputCargo" [(ngModel)]="funcCadastro.cargo" name="cargo">
-              <option value="nulo">-Selecione o Cargo-</option>
-              <option value="gerencia">Gerência</option>
-              <option value="manutencao">Manutenção</option>
+              <option value="" selected>-Selecione o cargo-</option>
+              <option value="GERENCIA">Gerência</option>
+              <option value="MANUTENCAO">Manutenção</option>
             </select>
           </div>
-          <div class="d-grid gap-2 mt-3"><button type="submit" class="btn" (click)="setCadastroInterno()">Entrar</button>
+          <div class="d-grid gap-2 mt-3">
+            <button type="submit" class="btn" (click)="setCadastroInterno()">Cadastrar</button>
+            <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102);">Cancelar</button>
          </div>
         </form>
     </div>

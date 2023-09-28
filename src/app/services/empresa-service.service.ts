@@ -33,6 +33,10 @@ export class EmpresaServiceService {
     return this.http.get<any[]>(`${this.empresaUrl}/${estado}`)
   }
 
+  public findAllEstado(){
+    return this.http.get<any[]>(`${this.empresaUrl}/estados`)
+  }
+
   public findAllFuncionarios(id:Number){
     return this.http.get(`${this.empresaUrl}/${id}/funcionarios`)
   }

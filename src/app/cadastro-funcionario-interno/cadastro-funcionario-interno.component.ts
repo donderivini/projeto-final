@@ -29,4 +29,8 @@ export class CadastroFuncionarioInternoComponent {
       }
     )
   }
+
+  btCancelar(){
+    this.router.navigate(['/home'])
+  }
 }

@@ -9,10 +9,10 @@
     <div class="form-group">
         <label for="exampleInputPassword1">Senha</label>
         <br>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" [(ngModel)]="funcLogin.senha" name="senha">
+        <input (keydown)="$event.keyCode == 13 ? getLogin() : null" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" [(ngModel)]="funcLogin.senha" name="senha">
     </div>
     <div id="area-botoes" class="d-grid gap-2 mt-2">
-        <button class="btn" type="button" (click)="getLogin()">Enviar</button>
+        <button class="btn" type="button" (click)="getLogin()">Entrar</button>
       </div>  
     </form>
 </div>

@@ -57,6 +57,10 @@ export class FuncionarioService {
     return this.http.get<any[]>(`${this.funcionarioUrl}/internos/${cargo}`)
   }
 
+  public findAllCargos(){
+    return this.http.get<any[]>(`${this.funcionarioUrl}/cargos`)
+  }
+
   public findAllRegistros(id: Number){
     return this.http.get<any[]>(`${this.funcionarioUrl}/${id}/registros`)
   }
