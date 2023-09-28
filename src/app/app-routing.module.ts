@@ -7,6 +7,7 @@ import { CadastroEmpresaComponent } from './cadastro-empresa/cadastro-empresa.co
 import { CadastroFuncionarioInternoComponent } from './cadastro-funcionario-interno/cadastro-funcionario-interno.component';
 import { CadastroFrotaComponent } from './cadastro-frota/cadastro-frota.component';
 import { CadastroRegistroComponent } from './cadastro-registro/cadastro-registro.component';
+import { UpdateFuncionarioInternoComponent } from './update-funcionario-interno/update-funcionario-interno.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'cadastro-empresa', component: CadastroEmpresaComponent},
   {path: 'cadastro-funcionario-interno', component: CadastroFuncionarioInternoComponent},
   {path: 'cadastro-frota', component: CadastroFrotaComponent},
-  {path: 'cadastro-registro', component: CadastroRegistroComponent}
+  {path: 'cadastro-registro', component: CadastroRegistroComponent},
+  {path: 'update-funcionario-interno', component: UpdateFuncionarioInternoComponent}
 ];
 
 @NgModule({
