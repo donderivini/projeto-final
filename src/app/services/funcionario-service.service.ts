@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Funcionario } from '../model/funcionario';
-import { LoginForm } from '../model/login-form';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,43 +21,43 @@ export class FuncionarioService {
     return this.funcionario;
   }
 
-  public createInterno(funcionario: any): Observable<any>{
-    return this.http.post<any>(`${this.funcionarioUrl}/cadastro/interno`, funcionario)
+  public createInterno(funcionario: any){
+    return this.http.post(`${this.funcionarioUrl}/cadastro/interno`, funcionario)
   }
 
-  public createCliente(funcionario: any): Observable<any>{
-    return this.http.post<any>(`${this.funcionarioUrl}/cadastro/cliente`, funcionario)
+  public createCliente(funcionario: any){
+    return this.http.post(`${this.funcionarioUrl}/cadastro/cliente`, funcionario)
   }
 
-  public updateCliente(id: Number, funcionario: any): Observable<any>{
-    return this.http.put<any>(`${this.funcionarioUrl}/cliente/${id}`, funcionario)
+  public updateCliente(id: Number, funcionario: any){
+    return this.http.put(`${this.funcionarioUrl}/cliente/${id}`, funcionario)
   }
 
-  public updateInterno(id: Number, funcionario: any): Observable<any>{
-    return this.http.put<any>(`${this.funcionarioUrl}/interno/${id}`, funcionario)
+  public updateInterno(id: Number, funcionario: any){
+    return this.http.put(`${this.funcionarioUrl}/interno/${id}`, funcionario)
   }
   
-  public get(id: Number): Observable<any>{
-    return this.http.get<any>(`${this.funcionarioUrl}/${id}`)
+  public get(id: Number){
+    return this.http.get(`${this.funcionarioUrl}/${id}`)
   }
   
-  public findAll(): Observable<any[]>{
+  public findAll(){
     return this.http.get<any[]>(this.funcionarioUrl)
   }
 
-  public findAllCliente(): Observable<any[]>{
+  public findAllCliente(){
     return this.http.get<any[]>(`${this.funcionarioUrl}/clientes`)
   }
 
-  public findAllInterno(): Observable<any[]>{
+  public findAllInterno(){
     return this.http.get<any[]>(`${this.funcionarioUrl}/internos`)
   }
 
-  public findAllInternoByCargo(cargo: string): Observable<any[]>{
+  public findAllInternoByCargo(cargo: string){
     return this.http.get<any[]>(`${this.funcionarioUrl}/internos/${cargo}`)
   }
 
-  public findAllRegistros(id: Number): Observable<any[]>{
+  public findAllRegistros(id: Number){
     return this.http.get<any[]>(`${this.funcionarioUrl}/${id}/registros`)
   }
 

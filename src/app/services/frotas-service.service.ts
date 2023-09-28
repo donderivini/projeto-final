@@ -12,23 +12,27 @@ export class FrotasServiceService {
     this.frotaUrl= 'http://localhost:8080/frotas';
   }
 
-  public get(id: Number): Observable<any>{
+  public get(id: Number){
     return this.http.get<any>(`${this.frotaUrl}/${id}`)
   }
 
-  public getAllRegistros(id: Number):  Observable<any[]> {
+  public getAllRegistros(id: Number) {
     return this.http.get<any[]>(`${this.frotaUrl}/${id}/registros`)
   }
 
-  public create(frota: String): Observable<any[]>{
-    return this.http.post<any[]>(`${this.frotaUrl}/cadastro`, frota)
+  public getAllRegistrosByCategoria(id: Number, categoria: string){
+    return this.http.get<any[]>(`${this.frotaUrl}/${id}/registros/${categoria}`)
   }
 
-  public update(id: Number, frota: String): Observable<any[]> {
-    return this.http.put<any[]>(`${this.frotaUrl}/${id}`, frota)
+  public create(frota: String){
+    return this.http.post(`${this.frotaUrl}/cadastro`, frota)
   }
 
-  public delete(id: Number): Observable<any[]> {
-    return this.http.delete<any[]>(`${this.frotaUrl}/${id}`)
+  public update(id: Number, frota: String) {
+    return this.http.put(`${this.frotaUrl}/${id}`, frota)
+  }
+
+  public delete(id: Number){
+    return this.http.delete(`${this.frotaUrl}/${id}`)
   }
 }

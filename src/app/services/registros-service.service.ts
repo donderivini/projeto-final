@@ -32,7 +32,7 @@ export class RegistrosServiceService {
     return this.http.delete<any[]>(`${this.registrosUrl}/${id}`)
   }
 
-  public getAll(): Observable<any[]>{
+  public getAll(){
     return this.http.get<any[]>(this.registrosUrl)
   }
 

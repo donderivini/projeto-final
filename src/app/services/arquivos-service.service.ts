@@ -12,19 +12,19 @@ export class ArquivosServiceService {
     this.arquivosUrl= 'http://localhost:8080/arquivos';
   }
 
-  public get(id: Number): Observable<any>{
-    return this.http.get<any>(`${this.arquivosUrl}/${id}`)
+  public get(id: Number){
+    return this.http.get(`${this.arquivosUrl}/${id}`)
   }
 
-  public create(arquivo: String): Observable<any[]>{
-    return this.http.post<any[]>(`${this.arquivosUrl}/cadastro`, arquivo)
+  public create(arquivo: String){
+    return this.http.post(`${this.arquivosUrl}/cadastro`, arquivo)
   }
 
-  public update(id: Number, arquivo: String): Observable<any[]> {
-    return this.http.put<any[]>(`${this.arquivosUrl}/${id}`, arquivo)
+  public update(id: Number, arquivo: String){
+    return this.http.put(`${this.arquivosUrl}/${id}`, arquivo)
   }
 
-  public delete(id: Number): Observable<any[]> {
-    return this.http.delete<any[]>(`${this.arquivosUrl}/${id}`)
+  public delete(id: Number){
+    return this.http.delete(`${this.arquivosUrl}/${id}`)
   }
 }

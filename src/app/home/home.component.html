@@ -15,30 +15,27 @@
     <div class="col-3">
       <div class="px-3 area-conteudo">
         <h6>FILTROS</h6>
-        <select *ngIf="!funcionarioCliente" class="form-select my-2" aria-label="Default select example">
-          <option selected>Todas as empresas</option>
-          <option value="1">Empresa 1</option>
-          <option value="2">Empresa 2</option>
-          <option value="3">Empresa 3</option>
+        <select onchange="setRegistros()" *ngIf="!funcionarioCliente" [(ngModel)]="idEmpresaEscolhida" class="form-select my-2">
+          <option value="" selected>Todas as empresas</option>
+          <option *ngFor="let item of listaEmpresas" value="{{item.id}}">{{item.nome}}</option>
         </select>
-        <select class="form-select my-2" aria-label="Default select example">
-          <option selected>Todas as frotas</option>
-          <option value="1">Frota 1</option>
-          <option value="2">Frota 2</option>
-          <option value="3">Frota 3</option>
+        <select onchange="setRegistros()" *ngIf="idEmpresaEscolhida != ''" class="form-select my-2" aria-label="Default select example">
+          <option value="" selected>Todas as frotas</option>
+          <option *ngFor="let item of listaFrotas" value="{{item.id}}">{{item.nome}}</option>
         </select>
-        <select class="form-select my-2" aria-label="Default select example">
-          <option selected>Todas as categorias</option>
-          <option value="1">LAUDO</option>
-          <option value="2">PROBLEMA</option>
-          <option value="3">SOLUÇÃO</option>
+        <select onchange="setRegistros()" class="form-select my-2" aria-label="Default select example">
+          <option value="" selected>Todas as categorias</option>
+          <option value="NOVO_LAUDO">LAUDO</option>
+          <option value="PROBLEMA_ENCONTRADO">PROBLEMA</option>
+          <option value="PROBLEMA_SOLUCIONADO">SOLUÇÃO</option>
         </select>
       </div>
       <div id="area-botoes" class="d-grid gap-2 mt-2">
-        <button class="btn" type="button">NOVO REGISTRO</button>
-        <button (click)="goToCadastroEmpresa()" *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR EMPRESA</button>
-        <button (click)="goToCadastroFuncionario()" *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR USUARIO</button>
-        <button *ngIf="!funcionarioCliente" class="btn" type="button">CADASTRAR USUARIO FHR</button>
+        <button (click)="goToCadastroRegistro()" class="btn" type="button">NOVO REGISTRO</button>
+        <button (click)="goToCadastroFuncionario()" *ngIf="gerencia" class="btn" type="button">CADASTRAR USUARIO</button>
+        <button (click)="goToCadastroFuncionarioInterno()" *ngIf="gerencia" class="btn" type="button">CADASTRAR USUARIO FHR</button>
+        <button (click)="goToCadastroEmpresa()" *ngIf="gerencia" class="btn" type="button">CADASTRAR EMPRESA</button>
+        <button (click)="goToCadastroFrotas()" *ngIf="gerencia" class="btn" type="button">CADASTRAR FROTA</button>
       </div>  
     </div>
     <div class="col">
@@ -54,23 +51,11 @@
             </tr>
           </thead>
           <tbody class="table-group-divider">
-            <tr>
-              <td>Registro 1</td>
-              <td>Frota 1</td>
-              <td>LAUDO</td>
-              <td>25/09/2023</td>
-            </tr>
-            <tr>
-              <td>Registro 2</td>
-              <td>Frota 2</td>
-              <td>PROBLEMA</td>
-              <td>26/09/2023</td>
-            </tr>
-            <tr>
-              <td>Registro 3</td>
-              <td>Frota 3</td>
-              <td>SOLUÇÃO</td>
-              <td>27/09/2023</td>
+            <tr *ngFor="let item of listaRegistros">
+              <td>{{item.titulo}}</td>
+              <td>{{item.frota}}</td>
+              <td>{{item.categoria}}</td>
+              <td>{{item.dataRegistro}}</td>
             </tr>
           </tbody>
         </table>

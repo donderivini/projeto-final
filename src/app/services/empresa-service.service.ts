@@ -30,7 +30,7 @@ export class EmpresaServiceService {
   }
 
   public findAllByEstado(estado: string){
-    return this.http.get(`${this.empresaUrl}/${estado}`)
+    return this.http.get<any[]>(`${this.empresaUrl}/${estado}`)
   }
 
   public findAllFuncionarios(id:Number){
@@ -38,15 +38,15 @@ export class EmpresaServiceService {
   }
 
   public findAllFrotas(id:Number){
-    return this.http.get(`${this.empresaUrl}/${id}/frotas`)
+    return this.http.get<any[]>(`${this.empresaUrl}/${id}/frotas`)
   }
 
   public findAllRegistros(id:Number){
-    return this.http.get(`${this.empresaUrl}/${id}/registros`)
+    return this.http.get<any[]>(`${this.empresaUrl}/${id}/registros`)
   }
 
   public findAllRegistrosByCategoria(id:Number, categoria: string){
-    return this.http.get(`${this.empresaUrl}/${id}/registros/${categoria}`)
+    return this.http.get<any[]>(`${this.empresaUrl}/${id}/registros/${categoria}`)
   }
 
   public delete(id: Number){
