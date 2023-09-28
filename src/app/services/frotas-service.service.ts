@@ -9,7 +9,7 @@ export class FrotasServiceService {
   private frotaUrl;
 
   constructor(private http: HttpClient) { 
-    this.frotaUrl= 'http://localhost:8080/frotas';
+    this.frotaUrl= 'http://192.168.15.118:8080/frotas';
   }
 
   public get(id: Number){
@@ -24,11 +24,11 @@ export class FrotasServiceService {
     return this.http.get<any[]>(`${this.frotaUrl}/${id}/registros/${categoria}`)
   }
 
-  public create(frota: String){
+  public create(frota: any){
     return this.http.post(`${this.frotaUrl}/cadastro`, frota)
   }
 
-  public update(id: Number, frota: String) {
+  public update(id: Number, frota: any) {
     return this.http.put(`${this.frotaUrl}/${id}`, frota)
   }
 

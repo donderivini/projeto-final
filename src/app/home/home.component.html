@@ -31,18 +31,18 @@
         </select>
       </div>
       <div id="area-botoes" class="d-grid gap-2 mt-2">
-        <div class="dropdown" *ngIf="gerencia">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            CADASTRAR
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <button (click)="goToCadastroRegistro()" class="dropdown-item" type="button">NOVO REGISTRO</button>
+          <button (click)="goToCadastroRegistro()" class="btn" type="button">NOVO REGISTRO</button>
+            <!-- <select name="" id="" *ngIf="gerencia" [(ngModel)]="cadastro" onchange="setCadastro()">
+              <option value="" selected>CADASTRAR</option>
+              <option value="novoUsuario">NOVO USUARIO</option>
+              <option value="novoFhr">NOVO USUARIO FHR</option>
+              <option value="novaEmpresa">NOVA EMPRESA</option>
+              <option value="novaFrota">NOVA FROTA</option>
+            </select> -->
             <button (click)="goToCadastroFuncionario()" *ngIf="gerencia" class="btn" type="button">NOVO USUARIO</button>
             <button (click)="goToCadastroFuncionarioInterno()" *ngIf="gerencia" class="btn" type="button">NOVO USUARIO FHR</button>
             <button (click)="goToCadastroEmpresa()" *ngIf="gerencia" class="btn" type="button">NOVA EMPRESA</button>
             <button (click)="goToCadastroFrotas()" *ngIf="gerencia" class="btn" type="button">NOVA FROTA</button>
-          </div>
-        </div>
       </div>  
     </div>
     <div class="col">

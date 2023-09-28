@@ -10,7 +10,7 @@ export class EmpresaServiceService {
   private empresaUrl
 
   constructor(private http:HttpClient) { 
-    this.empresaUrl = 'http://localhost:8080/empresas'
+    this.empresaUrl = 'http://192.168.15.118:8080/empresas'
   }
 
   public create(empresa: any){

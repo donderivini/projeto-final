@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit{
   idEmpresaEscolhida: any = ''
   idFrotaEscolhida: any = ''
   categoria: any = ''
+  cadastro: any = ''
 
   funcionarioCliente: boolean = true
   gerencia: boolean = false
@@ -142,4 +143,14 @@ export class HomeComponent implements OnInit{
     this.router.navigate(['/cadastro-frota'])
   }
 
+  //  setCadastro(){
+  //   if(this.cadastro == "novoUsuario")
+  //   this.goToCadastroFuncionario();
+  //   if(this.cadastro == "novoFhr")
+  //   this.goToCadastroFuncionarioInterno();
+  //   if(this.cadastro == "novaEmpresa")
+  //   this.goToCadastroEmpresa();
+  //   if(this.cadastro == "novaFrota")
+  //   this.goToCadastroFrotas()
+  //}
 }

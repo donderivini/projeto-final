@@ -10,7 +10,7 @@ export class FuncionarioService {
   private funcionario: any
 
   constructor(private http: HttpClient){
-    this.funcionarioUrl= 'http://localhost:8080/funcionarios';
+    this.funcionarioUrl= 'http://192.168.15.118:8080/funcionarios';
   }
 
   public setFuncionario(funcionario: any){
