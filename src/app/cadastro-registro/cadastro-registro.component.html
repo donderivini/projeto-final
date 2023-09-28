@@ -8,51 +8,39 @@
 <form class="formulario mx-auto">
     <div class="form-group">
       <label for="exampleFormControlInput1">Título:</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1">
-    </div>
-    <label for="">Empresa</label>      
-    <input class="form-control" list="brow">
-    <datalist id="brow">
-      <option value="aEmpresa 1">
-      <option value="aeEmpresa 1">
-      <option value="ewrEmpresa 1">
-      <option value="sdfEmpresa 1">
-      <option value="aEmpresa 2">
-      <option value="aeEmpresa 2">
-      <option value="ewrEmpresa 2">
-      <option value="sdfEmpresa 2">
-      <option value="aEmpresa 3">
-      <option value="aeEmpresa 3">
-      <option value="ewrEmpresa 3">
-      <option value="sdfEmpresa 3">
-    </datalist>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Selecione a frota:</label>
-      <select class="form-control" id="exampleFormControlSelect1">
-        <option>Frota 1</option>
-        <option>Frota 2</option>
-        <option>Frota 3</option>
-        <option>Frota 4</option>
-        <option>Frota 5</option>
+      <input type="text" class="form-control" [(ngModel)]="registro.titulo" id="exampleFormControlInput1">
+      <label for="inputDescricao">Descrição:</label>
+      <textarea id="inputDescricao" class="form-control" [(ngModel)]="registro.descricao" aria-label="With textarea"></textarea>
+      <label for="">Empresa</label>      
+      <select onchange="setFrotas()" class="form-control" [(ngModel)]="idEmpresa" name="empresa">
+        <option value="" selected>-Selecione a empresa-</option>
+        <option *ngFor="let item of listaEmpresas" value="{{item.id}}">{{item.nome}}</option>
+      </select>
+      <label for="">Frota</label>      
+      <select class="form-control" [(ngModel)]="registro.idFrota" name="empresa">
+        <option value="" selected>-Selecione a frota-</option>
+        <option *ngFor="let item of listaFrotas" value="{{item.id}}">{{item.nome}}</option>
+      </select>
+      <label for="exampleFormControlSelect1">Selecione a categoria do registro:</label>
+      <select class="form-control" [(ngModel)]="registro.registroCategoria" id="exampleFormControlSelect1">
+        <option value="NOVO_LAUDO">Novo laudo</option>
+        <option value="PROBLEMA_ENCONTRADO">Problema encontrado</option>
+        <option value="PROBLEMA_SOLUCIONADO">Problema solucionado</option>
       </select>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect1">Selecione a categoria do registro:</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>Categoria 1</option>
-          <option>Categoria 2</option>
-          <option>Categoria 3</option>
-          <option>Categoria 4</option>
-          <option>Categoria 5</option>
-        </select>
-      </div>
       <div class="form-group">
-        <label for="exampleFormControlFile1">Anexar Laudo:</label><br>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        <label for="exampleFormControlFile1">Anexar arquivo:</label><br>
+        <input type="file" (change)="onFileSelected($event)" class="form-control-file" id="exampleFormControlFile1">
       </div>
-      <div class="d-grid gap-2 mt-4">
-        <button type="submit" class="btn" >Cadastrar</button>
-        <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102);">Cancelar</button>
-      </div> 
+      <div class="container text-center mt-4">
+        <div class="row">
+          <div class="col">
+            <button (click)="cadastrar()" type="submit" class="btn" style="width: 100%;">Cadastrar</button>
+          </div>
+          <div class="col">
+            <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102); width: 100%;">Cancelar</button>
+          </div>
+        </div>
+      </div>
   </form>
 <app-rodape></app-rodape>

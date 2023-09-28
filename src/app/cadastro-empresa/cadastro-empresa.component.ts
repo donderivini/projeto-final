@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { EmpresaServiceService } from '../services/empresa-service.service';
 
@@ -7,13 +7,23 @@ import { EmpresaServiceService } from '../services/empresa-service.service';
   templateUrl: './cadastro-empresa.component.html',
   styleUrls: ['./cadastro-empresa.component.css']
 })
-export class CadastroEmpresaComponent {
+export class CadastroEmpresaComponent implements OnInit{
 
   constructor(private router:Router, private empresa_service: EmpresaServiceService){}
 
   empresaCadastro= {nome: '', cnpj: '', endereco: '', cidade: '', estado: 'Escolher...'}
 
   empresa: any;
+
+  estados: any[] = []
+
+  ngOnInit(): void {
+      this.empresa_service.findAllEstado().subscribe(
+        (response) => {
+          this.estados = response
+        }
+      )
+  }
 
   setCadastro(){
     console.log(this.empresaCadastro)
