@@ -31,11 +31,18 @@
         </select>
       </div>
       <div id="area-botoes" class="d-grid gap-2 mt-2">
-        <button (click)="goToCadastroRegistro()" class="btn" type="button">NOVO REGISTRO</button>
-        <button (click)="goToCadastroFuncionario()" *ngIf="gerencia" class="btn" type="button">CADASTRAR USUARIO</button>
-        <button (click)="goToCadastroFuncionarioInterno()" *ngIf="gerencia" class="btn" type="button">CADASTRAR USUARIO FHR</button>
-        <button (click)="goToCadastroEmpresa()" *ngIf="gerencia" class="btn" type="button">CADASTRAR EMPRESA</button>
-        <button (click)="goToCadastroFrotas()" *ngIf="gerencia" class="btn" type="button">CADASTRAR FROTA</button>
+        <div class="dropdown" *ngIf="gerencia">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            CADASTRAR
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <button (click)="goToCadastroRegistro()" class="dropdown-item" type="button">NOVO REGISTRO</button>
+            <button (click)="goToCadastroFuncionario()" *ngIf="gerencia" class="btn" type="button">NOVO USUARIO</button>
+            <button (click)="goToCadastroFuncionarioInterno()" *ngIf="gerencia" class="btn" type="button">NOVO USUARIO FHR</button>
+            <button (click)="goToCadastroEmpresa()" *ngIf="gerencia" class="btn" type="button">NOVA EMPRESA</button>
+            <button (click)="goToCadastroFrotas()" *ngIf="gerencia" class="btn" type="button">NOVA FROTA</button>
+          </div>
+        </div>
       </div>  
     </div>
     <div class="col">
