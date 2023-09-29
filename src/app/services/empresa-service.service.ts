@@ -10,8 +10,8 @@ export class EmpresaServiceService {
   private empresaUrl
 
   constructor(private http:HttpClient) { 
-    this.empresaUrl = 'http://192.168.15.118:8080/empresas'
-    //this.arquivosUrl= 'http://localhost:8080/arquivos';
+    // this.empresaUrl = 'http://192.168.15.118:8080/empresas'
+    this.empresaUrl= 'http://localhost:8080/empresas';
   }
 
   public create(empresa: any){
@@ -23,7 +23,7 @@ export class EmpresaServiceService {
   }
 
   public update(id: Number, empresa: any){
-    return this.http.put(`${this.empresaUrl}/${id}`, empresa)
+    return this.http.put(`${this.empresaUrl}/update/${id}`, empresa)
   }
 
   public findAll(){
@@ -31,7 +31,7 @@ export class EmpresaServiceService {
   }
 
   public findAllByEstado(estado: string){
-    return this.http.get<any[]>(`${this.empresaUrl}/${estado}`)
+    return this.http.get<any[]>(`${this.empresaUrl}/estados/${estado}`)
   }
 
   public findAllEstado(){
@@ -55,6 +55,6 @@ export class EmpresaServiceService {
   }
 
   public delete(id: Number){
-    this.http.delete(`${this.empresaUrl}/${id}`)
+    this.http.delete(`${this.empresaUrl}/delete/${id}`)
   }
 }

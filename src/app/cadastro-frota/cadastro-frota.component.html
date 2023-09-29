@@ -4,15 +4,15 @@
 <form class="formulario mx-auto">
     <label for="">Empresa</label> 
     <br>     
-    <select name="empresa" [(ngModel)]="idEmpresa" id="" (change)="setLista()">
+    <select name="empresa" [(ngModel)]="frota.idEmpresa" id="" (change)="setLista()">
         <option value="0">Selecione a Empresa</option>
         <option value="{{item.id}}" *ngFor="let item of listaEmpresas">{{item.nome}}</option>
     </select>
         <br>
-        <ul class="lista mt-3" *ngIf="idEmpresa != 0">
+        <ul class="lista mt-3" *ngIf="frota.idEmpresa != 0">
             <h5 class="titulo">Frotas</h5>
-            <li *ngFor="let item of listaFrotas">
-                {{item.name}}
+            <li *ngFor="let item of listaFrotas; trackBy:trackBy">
+                {{item.nome}}
             </li>
         </ul>
         <div class="form-group">

@@ -9,8 +9,8 @@ export class FrotasServiceService {
   private frotaUrl;
 
   constructor(private http: HttpClient) { 
-    this.frotaUrl= 'http://192.168.15.118:8080/frotas';
-    //this.arquivosUrl= 'http://localhost:8080/arquivos';
+    // this.frotaUrl= 'http://192.168.15.118:8080/frotas';
+    this.frotaUrl= 'http://localhost:8080/frotas';
   }
 
   public get(id: Number){
@@ -30,10 +30,10 @@ export class FrotasServiceService {
   }
 
   public update(id: Number, frota: any) {
-    return this.http.put(`${this.frotaUrl}/${id}`, frota)
+    return this.http.put(`${this.frotaUrl}/update/${id}`, frota)
   }
 
   public delete(id: Number){
-    return this.http.delete(`${this.frotaUrl}/${id}`)
+    return this.http.delete(`${this.frotaUrl}/delete/${id}`)
   }
 }

@@ -13,7 +13,6 @@ export class CadastroFrotaComponent implements OnInit {
   listaEmpresas: any[] = []
 
   idFrota= 0;
-  idEmpresa= 0;
 
   constructor(private router: Router, private empresaSerice: EmpresaServiceService, private frotaService: FrotasServiceService){}
 
@@ -31,19 +30,22 @@ export class CadastroFrotaComponent implements OnInit {
     this.router.navigate(['/home'])
   }
 
-  setLista(){
-    this.frota.idEmpresa = this.idEmpresa
-    if(this.idEmpresa!=0){
-      this.empresaSerice.findAllFrotas(this.idEmpresa).subscribe(
+  setLista(){    
+    if(this.frota.idEmpresa!=0){
+      this.empresaSerice.findAllFrotas(this.frota.idEmpresa).subscribe(
         (response) => {
           this.listaFrotas = response
+          console.log(this.listaFrotas)
         }
       )
     } else{this.listaFrotas = []}
   }
 
+  trackBy(index: number, item: any) {
+    return item.nome;
+  }
+
   cadastrar(){
-    console.log(this.idEmpresa)
     console.log(this.frota)
     if(this.frota.nome != ''){
     this.frotaService.create(this.frota).subscribe(
