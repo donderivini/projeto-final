@@ -4,6 +4,7 @@
     color: #DCDCDC;
     align-items: center;     /* Alinha itens verticalmente no centro */
     width: 100%;             /* Preenche toda a largura */
+    min-width: 350px;
     position: fixed;         /* Fixa a navbar no topo */
     top: 0;                  /* No topo da página */
     left: 0;                 /* À esquerda da página */

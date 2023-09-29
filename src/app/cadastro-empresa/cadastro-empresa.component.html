@@ -1,15 +1,15 @@
 <app-navbar></app-navbar>
-<br>
 <div class="container d-flex flex-column justify-content-center align-items-center">
     <div class="corpo">
       <form class="cadastrar mb-4" >
           <div class="form-group" >
             
-            <label for="inputEmail4">Nome da Empresa</label>
-            <input type="text" class="form-control" id="inputEmail4" [(ngModel)]="empresaCadastro.nome" name="nome">
+            <label for="nomeEmpresa">Nome da Empresa</label>
+            <input type="text" class="form-control mb-0" id="nomeEmpresa" [(ngModel)]="empresaCadastro.nome" name="nomeEmpresa">
+            
             
             <label for="inputPassword4">CNPJ</label>
-            <input type="text" class="form-control" id="inputPassword4" [(ngModel)]="empresaCadastro.cnpj" name="cnpj">
+            <input type="number" class="form-control" id="inputPassword4" [(ngModel)]="empresaCadastro.cnpj" name="cnpj">
             
           
             <label for="inputAddress">Endereço</label>

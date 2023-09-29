@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class EmpresaServiceService {
   }
 
   public create(empresa: any){
-    return this.http.post(`${this.empresaUrl}/cadastro`, empresa)
+    return this.http.post(`${this.empresaUrl}/cadastro`, empresa).pipe(catchError(this.handleError))
   }
 
   public get(id: Number){
@@ -56,5 +56,9 @@ export class EmpresaServiceService {
 
   public delete(id: Number){
     this.http.delete(`${this.empresaUrl}/delete/${id}`)
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    return throwError(() => error);
   }
 }

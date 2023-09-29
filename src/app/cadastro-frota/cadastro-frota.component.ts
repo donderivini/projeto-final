@@ -12,8 +12,6 @@ export class CadastroFrotaComponent implements OnInit {
   listaFrotas: any[] = []
   listaEmpresas: any[] = []
 
-  idFrota= 0;
-
   constructor(private router: Router, private empresaSerice: EmpresaServiceService, private frotaService: FrotasServiceService){}
 
   frota = {nome:'', idEmpresa:0}
