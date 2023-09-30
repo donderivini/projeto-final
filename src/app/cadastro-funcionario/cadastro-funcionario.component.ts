@@ -19,11 +19,15 @@ export class CadastroFuncionarioComponent implements OnInit{
   listaEmpresas: any[]=[]
 
   ngOnInit(): void {
+    if(this.funcionario_service.getFuncionario() != null){
       this.empresa_service.findAll().subscribe(
         (response) => {
           this.listaEmpresas = response
         }
       )
+    }else{
+      this.router.navigate(['/'])
+    }
   }
 
   cadastrar(){
@@ -52,7 +56,7 @@ export class CadastroFuncionarioComponent implements OnInit{
             console.log('error', err)
             if(err.statusText == 'OK'){
               if(err.status == 500){
-                window.alert('Funcionário já cadastrado')
+                window.alert('Login já cadastrado')
               }
               else{
                 window.alert('Ocorreu um erro\n'+ err.message)

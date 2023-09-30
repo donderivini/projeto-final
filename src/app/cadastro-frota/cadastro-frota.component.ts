@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmpresaServiceService } from '../services/empresa-service.service';
 import { FrotasServiceService } from '../services/frotas-service.service';
+import { FuncionarioService } from '../services/funcionario-service.service';
 
 @Component({
   selector: 'app-cadastro-frota',
@@ -12,16 +13,23 @@ export class CadastroFrotaComponent implements OnInit {
   listaFrotas: any[] = []
   listaEmpresas: any[] = []
 
-  constructor(private router: Router, private empresaSerice: EmpresaServiceService, private frotaService: FrotasServiceService){}
+  constructor(private router: Router, 
+    private empresaSerice: EmpresaServiceService, 
+    private frotaService: FrotasServiceService,
+    private funcionarioService: FuncionarioService){}
 
   frota = {nome:'', idEmpresa:0}
 
   ngOnInit(): void {
+    if(this.funcionarioService.getFuncionario() != null){
       this.empresaSerice.findAll().subscribe(
         (response) => {
           this.listaEmpresas = response
         }
       )
+    }else{
+      this.router.navigate(['/'])
+    }
   }
 
   btCancelar(){
@@ -48,33 +56,30 @@ export class CadastroFrotaComponent implements OnInit {
     console.log(this.frota)
     if(this.frota.nome != ''
     && this.frota.idEmpresa != 0){
-      if(this.frota.nome.toString().length >= 2){
-        this.frotaService.create(this.frota).subscribe({
-          next: (data) => {
-            if (data != null){
-              window.alert('Frota cadastrada com sucesso')
-              this.router.navigate(['/home'])
+      this.frotaService.create(this.frota).subscribe({
+        next: (data) => {
+          if (data != null){
+            window.alert('Frota cadastrada com sucesso')
+            this.router.navigate(['/home'])
+          }
+        },
+        error: (err) => {
+          console.log('error', err)
+          if(err.statusText == 'OK'){
+            if(err.status == 500){
+              window.alert('Frota já cadastrada')
             }
-          },
-          error: (err) => {
-            console.log('error', err)
-            if(err.statusText == 'OK'){
-              if(err.status == 500){
-                window.alert('Frota já cadastrada')
-              }
-              else{
-                window.alert('Ocorreu um erro\n'+ err.message)
-              }
-            }else{
-              window.alert('Ocorreu um erro de conexão')
-            }        
-          },
-          complete: () => console.log("Completo")
-        })
-      }
-      else{
-        window.alert('Preencha os campos corretamente')
-      }
+            else{
+              window.alert('Ocorreu um erro\n'+ err.message)
+            }
+          }else{
+            window.alert('Ocorreu um erro de conexão')
+          }        
+        },
+        complete: () => console.log("Completo")
+      })
+    }else{
+      window.alert('Preencha os campos corretamente')
     }
   }
 }

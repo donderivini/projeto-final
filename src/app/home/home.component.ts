@@ -12,20 +12,6 @@ import { RegistrosServiceService } from '../services/registros-service.service';
 })
 export class HomeComponent implements OnInit{
 
-  funcionario: any
-  empresa: any = null
-  idEmpresaEscolhida: any = ''
-  idFrotaEscolhida: any = ''
-  categoria: any = ''
-  cadastro: any = ''
-
-  funcionarioCliente: boolean = true
-  gerencia: boolean = false
-  
-  listaEmpresas: any[] = []
-  listaFrotas: any[] = []
-  listaRegistros: any[] = []
-
   constructor(
     private router: Router,
     private funcionarioService: FuncionarioService,
@@ -34,93 +20,195 @@ export class HomeComponent implements OnInit{
     private registroService: RegistrosServiceService
   ){}
 
+  funcionario: any
+  
+  idEmpresa: any = 0
+  idFrota: any = 0
+  categoria: any = ''
+
+  cliente: boolean = true
+  gerencia: boolean = false
+
+  listaEmpresas: any[]=[]
+  listaFrotas: any[]=[]
+  listaRegistros: any[]=[]
+  
   ngOnInit(): void {
-    this.funcionario = this.funcionarioService.getFuncionario()
-    console.log(this.funcionario)
-    if(this.funcionario.empresa != null){
-      this.funcionarioCliente = true;
-      this.empresaService.get(this.funcionario.empresa.id).subscribe(
-        (response) => {
-          this.empresa = response
-          this.idEmpresaEscolhida = this.empresa.id
-        }
-      )
-      this.empresaService.findAllFrotas(this.idEmpresaEscolhida).subscribe(
-        (response) => {
-          this.listaFrotas = response
-        }
-      )
-    }
-    else{
-      this.funcionarioCliente = false;
-      this.funcionario.cargo == 'GERENCIA' ? this.gerencia = true : this.gerencia = false
+    if(this.funcionarioService.getFuncionario() != null){
+      this.funcionario = this.funcionarioService.getFuncionario()
 
-      this.empresaService.findAll().subscribe(
-        (response) => {
-          this.listaEmpresas = response
-        }
-      )
+      if(this.funcionario.empresa == null){
+        this.empresaService.findAll().subscribe(
+          (response) => {
+            this.listaEmpresas = response
+          }
+        )
 
-    }
-
-  }
-
-  setRegistros(){
-    if(this.idEmpresaEscolhida != ''){
-      if(this.idFrotaEscolhida != ''){
-        if(this.categoria != ''){
-          this.frotaService.getAllRegistrosByCategoria(this.idFrotaEscolhida, this.categoria).subscribe(
+        this.cliente = false
+        if(this.funcionario.cargo == 'GERENCIA'){
+          this.gerencia = true
+          this.registroService.getAll().subscribe(
             (response) => {
+              response.forEach((value)=>{
+                value.dataResgistro = value.dataResgistro.substring(0,10)
+              })
               this.listaRegistros = response
             }
           )
         }
         else{
-          this.frotaService.getAllRegistros(this.idFrotaEscolhida).subscribe(
+          this.funcionarioService.findAllRegistros(this.funcionario.id).subscribe(
             (response) => {
+              response.forEach((value)=>{              
+                value.dataResgistro = value.dataResgistro.substring(0,10)
+              })
+              this.listaRegistros = response
+            }
+          )
+        }
+      }else{
+        this.idEmpresa = this.funcionario.empresa.id
+
+        this.empresaService.findAllFrotas(this.idEmpresa).subscribe(
+          (response) => {
+            this.listaFrotas = response
+          }
+        )
+
+        this.empresaService.findAllRegistros(this.idEmpresa).subscribe(
+          (response) => {
+            response.forEach((value)=>{
+              value.dataResgistro = value.dataResgistro.substring(0,10)            
+            })
+            this.listaRegistros = response
+          }
+        )
+      }  
+    }else{
+      this.router.navigate(['/'])
+    }
+    
+  }
+
+  setFrotas(){
+    if(this.idEmpresa != 0){
+      this.empresaService.findAllFrotas(this.idEmpresa).subscribe(
+        (response) => {
+          this.listaFrotas = response
+        }
+      )
+    }else{
+      this.idFrota = 0
+    }
+
+    this.setRegistros()
+  }
+
+  setRegistros(){
+    if(this.idEmpresa == 0){
+      if(this.funcionario.cargo == 'GERENCIA'){
+        if(this.categoria == ''){
+          this.registroService.getAll().subscribe(
+            (response) => {
+              response.forEach((value)=>{
+                value.dataResgistro = value.dataResgistro.substring(0,10)                
+              })
+              this.listaRegistros = response
+            }
+          )
+        }
+        else{
+          this.registroService.getAllByCategoria(this.categoria).subscribe(
+            (response) => {
+              response.forEach((value)=>{
+                value.dataResgistro = value.dataResgistro.substring(0,10)                
+              })
               this.listaRegistros = response
             }
           )
         }
       }
-      else if(this.categoria != ''){
-        this.empresaService.findAllRegistrosByCategoria(this.idEmpresaEscolhida, this.categoria).subscribe(
-          (response) => {
-            this.listaRegistros = response
-          }
-        )
-      }
       else{
-        this.empresaService.findAllRegistros(this.idEmpresaEscolhida).subscribe(
-          (response) => {
-            this.listaRegistros = response
-          }
-        )
-      }
-    }
-    else if (this.categoria != ''){
-      this.registroService.getAllByCategoria(this.categoria).subscribe(
-        (response) => {
-          this.listaRegistros = response
+        if(this.categoria == ''){
+          this.funcionarioService.findAllRegistros(this.funcionario.id).subscribe(
+            (response) => {
+              response.forEach((value)=>{
+                value.dataResgistro = value.dataResgistro.substring(0,10)                
+              })
+              this.listaRegistros = response
+            }
+          )
         }
-      )
+        else{
+          this.funcionarioService.findAllRegistrosByCategoria(this.funcionario.id, this.categoria).subscribe(
+            (response) => {
+              response.forEach((value)=>{
+                value.dataResgistro = value.dataResgistro.substring(0,10)                
+              })
+              this.listaRegistros = response
+            }
+          )
+        }
+      }
     }
     else{
-      this.registroService.getAll().subscribe(
-        (response) => {
-          this.listaRegistros = response
+      if(this.idFrota == 0){
+        if(this.categoria == ''){
+          this.empresaService.findAllRegistros(this.idEmpresa).subscribe(
+            (response) => {
+              response.forEach((value)=>{
+                value.dataResgistro = value.dataResgistro.substring(0,10)                
+              })
+              this.listaRegistros = response
+            }
+          )
         }
-      )
+        else{
+          this.empresaService.findAllRegistrosByCategoria(this.idEmpresa,this.categoria).subscribe(
+            (response) => {
+              response.forEach((value)=>{
+                value.dataResgistro = value.dataResgistro.substring(0,10)                
+              })
+              this.listaRegistros = response
+            }
+          )
+        }
+      }
+      else{
+        if(this.categoria == ''){
+          this.frotaService.getAllRegistros(this.idFrota).subscribe(
+            (response) => {
+              response.forEach((value)=>{
+                value.dataResgistro = value.dataResgistro.substring(0,10)                
+              })
+              this.listaRegistros = response
+            }
+          )
+        }
+        else{
+          this.frotaService.getAllRegistrosByCategoria(this.idFrota,this.categoria).subscribe(
+            (response) => {
+              response.forEach((value)=>{
+                value.dataResgistro = value.dataResgistro.substring(0,10)                
+              })
+              this.listaRegistros = response
+            }
+          )
+        }
+      }
     }
 
-    this.listaRegistros.forEach(function (value) {
-      value.frota = value.frota.nome
-    })
+    console.log(this.listaRegistros)
+
+  }
+
+  printRegistro(titulo: any){
+    console.log(titulo)
   }
 
   logOut(){
     this.funcionarioService.setFuncionario(null)
-    this.router.navigate([''])
+    this.router.navigate(['/'])
   }
 
   goToCadastroFuncionario(){

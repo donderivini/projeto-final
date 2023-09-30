@@ -1,11 +1,79 @@
 <app-navbar></app-navbar>
 
-<div class="container">
+<div class="container mt-5 mb-5">
+  <div class="row area-conteudo mb-2 px-3">
+    <div class="col">
+      <h3>{{funcionario.nome}}</h3>
+      <p *ngIf="cliente">{{funcionario.empresa.nome}}</p>
+      <p *ngIf="!cliente">{{funcionario.cargo}} FHR</p>
+      <p>{{funcionario.email}}</p>
+    </div>
+    <div class="col-1">
+      <a href="" (click)="logOut()">SAIR</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="area-conteudo form-group px-3">
+        <h6>FILTROS</h6>
+        <select name="empresas" id="select-empresas" class="form-control" [(ngModel)]="idEmpresa" *ngIf="!cliente" (ngModelChange)="setFrotas()">
+          <option value="0" selected>Todas as empresas</option>
+          <option *ngFor="let item of listaEmpresas" value="{{item.id}}">{{item.nome}}</option>
+        </select>
+        <select name="frotas" id="select-frotas" class="form-control mt-2" [(ngModel)]="idFrota" *ngIf="idEmpresa!=0" (ngModelChange)="setRegistros()">
+          <option value="0" selected>Todas as frotas</option>
+          <option *ngFor="let item of listaFrotas" value="{{item.id}}">{{item.nome}}</option>
+        </select>
+        <select name="categorias" id="select-categorias" class="form-control mt-2"  [(ngModel)]="categoria" (ngModelChange)="setRegistros()">
+          <option value="" selected>Todas as categorias</option>
+          <option value="NOVO_LAUDO">Laudos</option>
+          <option value="PROBLEMA_ENCONTRADO">Problemas</option>
+          <option value="PROBLEMA_SOLUCIONADO">Solucionados</option>
+        </select>
+      </div>
+
+      <div id="area-botoes" class="d-grid gap-2 mt-2">
+        <button (click)="goToCadastroRegistro()" class="btn" type="button">NOVO REGISTRO</button>
+        <button (click)="goToCadastroFuncionario()" class="btn" type="button" *ngIf="gerencia">NOVO USUARIO</button>
+        <button (click)="goToCadastroFuncionarioInterno()" class="btn" type="button" *ngIf="gerencia">NOVO USUARIO FHR</button>
+        <button (click)="goToCadastroEmpresa()" class="btn" type="button" *ngIf="gerencia">NOVA EMPRESA</button>
+        <button (click)="goToCadastroFrotas()" class="btn" type="button" *ngIf="gerencia">NOVA FROTA</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="px-3 py-2 area-conteudo">
+        <h6>REGISTROS</h6>
+        <table id="tabela-registros" class="table text-left">
+          <thead>
+            <tr>
+              <th style="width:50%; text-align: left;">TITULO</th>
+              <th style="width:20%;">FROTA</th>
+              <th>CATEGORIA</th>
+              <th>DATA</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr (click)="printRegistro(item.titulo)" *ngFor="let item of listaRegistros">
+              <td>{{item.titulo}}</td>
+              <td>{{item.frota.nome}}</td>
+              <td>{{item.categoria}}</td>
+              <td>{{item.dataResgistro}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
   <div class="row area-conteudo mt-5 mb-2 px-3">
     <div class="col">
       <h3>{{funcionario.nome}}</h3>
-      <p *ngIf="funcionarioCliente">{{funcionario.empresa.nome}}</p>
-      <p *ngIf="!funcionarioCliente">{{funcionario.cargo}} FHR</p>
+      <p>{{funcionario.empresa.nome}}</p>
+      <p>{{funcionario.cargo}} FHR</p>
+      <p>{{funcionario.email}}</p>
     </div>
     <div class="col-1">
       <a href="" (click)="logOut()">SAIR</a>
@@ -13,17 +81,13 @@
   </div>
   <div class="row align-items-start">
     <div class="col-3">
-      <div class="px-3 area-conteudo">
+      <div class="px-3 area-conteudo form-group">
         <h6>FILTROS</h6>
-        <select onchange="setRegistros()" *ngIf="!funcionarioCliente" [(ngModel)]="idEmpresaEscolhida" class="form-select my-2">
-          <option value="" selected>Todas as empresas</option>
+        <select (change)="setRegistros()" class="form-control" name="empresa">
+          <option value="" selected>-Selecione a empresa-</option>
           <option *ngFor="let item of listaEmpresas" value="{{item.id}}">{{item.nome}}</option>
         </select>
-        <select onchange="setRegistros()" *ngIf="idEmpresaEscolhida != ''" class="form-select my-2" aria-label="Default select example">
-          <option value="" selected>Todas as frotas</option>
-          <option *ngFor="let item of listaFrotas" value="{{item.id}}">{{item.nome}}</option>
-        </select>
-        <select onchange="setRegistros()" class="form-select my-2" aria-label="Default select example">
+        <select class="form-select my-2" aria-label="Default select example">
           <option value="" selected>Todas as categorias</option>
           <option value="NOVO_LAUDO">LAUDO</option>
           <option value="PROBLEMA_ENCONTRADO">PROBLEMA</option>
@@ -32,17 +96,17 @@
       </div>
       <div id="area-botoes" class="d-grid gap-2 mt-2">
           <button (click)="goToCadastroRegistro()" class="btn" type="button">NOVO REGISTRO</button>
-            <!-- <select name="" id="" *ngIf="gerencia" [(ngModel)]="cadastro" onchange="setCadastro()">
+            <select name="" id="" *ngIf="gerencia" [(ngModel)]="cadastro" onchange="setCadastro()">
               <option value="" selected>CADASTRAR</option>
               <option value="novoUsuario">NOVO USUARIO</option>
               <option value="novoFhr">NOVO USUARIO FHR</option>
               <option value="novaEmpresa">NOVA EMPRESA</option>
               <option value="novaFrota">NOVA FROTA</option>
-            </select> -->
-            <button (click)="goToCadastroFuncionario()" *ngIf="gerencia" class="btn" type="button">NOVO USUARIO</button>
-            <button (click)="goToCadastroFuncionarioInterno()" *ngIf="gerencia" class="btn" type="button">NOVO USUARIO FHR</button>
-            <button (click)="goToCadastroEmpresa()" *ngIf="gerencia" class="btn" type="button">NOVA EMPRESA</button>
-            <button (click)="goToCadastroFrotas()" *ngIf="gerencia" class="btn" type="button">NOVA FROTA</button>
+            </select>
+            <button (click)="goToCadastroFuncionario()" class="btn" type="button">NOVO USUARIO</button>
+            <button (click)="goToCadastroFuncionarioInterno()" class="btn" type="button">NOVO USUARIO FHR</button>
+            <button (click)="goToCadastroEmpresa()" class="btn" type="button">NOVA EMPRESA</button>
+            <button (click)="goToCadastroFrotas()" class="btn" type="button">NOVA FROTA</button>
       </div>  
     </div>
     <div class="col">
@@ -58,7 +122,7 @@
             </tr>
           </thead>
           <tbody class="table-group-divider">
-            <tr *ngFor="let item of listaRegistros">
+            <tr *naRegistrosgFor="let item of listaRegistros; trackBy:item.id">
               <td>{{item.titulo}}</td>
               <td>{{item.frota}}</td>
               <td>{{item.categoria}}</td>
@@ -69,5 +133,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <app-rodape></app-rodape>
