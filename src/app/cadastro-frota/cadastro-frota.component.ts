@@ -44,18 +44,37 @@ export class CadastroFrotaComponent implements OnInit {
   }
 
   cadastrar(){
+    this.frota.nome = this.frota.nome.trim() 
     console.log(this.frota)
-    if(this.frota.nome != ''){
-    this.frotaService.create(this.frota).subscribe(
-      (response) => {
-        if(response != null){
-          window.alert('Cadastro feito com sucesso!')
-          this.setLista()
-        }else{
-          window.alert('Preencha o campo corretamente!')
-        }
+    if(this.frota.nome != ''
+    && this.frota.idEmpresa != 0){
+      if(this.frota.nome.toString().length >= 2){
+        this.frotaService.create(this.frota).subscribe({
+          next: (data) => {
+            if (data != null){
+              window.alert('Frota cadastrada com sucesso')
+              this.router.navigate(['/home'])
+            }
+          },
+          error: (err) => {
+            console.log('error', err)
+            if(err.statusText == 'OK'){
+              if(err.status == 500){
+                window.alert('Frota já cadastrada')
+              }
+              else{
+                window.alert('Ocorreu um erro\n'+ err.message)
+              }
+            }else{
+              window.alert('Ocorreu um erro de conexão')
+            }        
+          },
+          complete: () => console.log("Completo")
+        })
       }
-    )
+      else{
+        window.alert('Preencha os campos corretamente')
+      }
+    }
   }
- }
 }

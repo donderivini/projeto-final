@@ -17,17 +17,50 @@ export class CadastroFuncionarioInternoComponent {
   funcionario: any;
 
   setCadastroInterno(){
-    this.funcionario_service.createInterno(this.funcCadastro).subscribe(
-      (response) => {
-        if (response != null){
-          window.alert('Cadastro feito com sucesso')
-          this.router.navigate(['/home'])
-        }
-        else {
-          window.alert('Preencha os campos corretamente')
-        }
+    this.funcCadastro.nome = this.funcCadastro.nome.trim()
+    this.funcCadastro.login = this.funcCadastro.login.trim()
+    this.funcCadastro.senha = this.funcCadastro.senha.trim() 
+    this.funcCadastro.email = this.funcCadastro.email.trim()   
+    console.log(this.funcCadastro)
+    if(this.funcCadastro.nome != ''
+    && this.funcCadastro.login != ''
+    && this.funcCadastro.senha != ''
+    && this.funcCadastro.email != ''
+    && this.funcCadastro.cargo != ''){
+      if(this.funcCadastro.senha.toString().length >= 5){
+        this.funcionario_service.createInterno(this.funcCadastro).subscribe({
+          next: (data) => {
+            if (data != null){
+              window.alert('Cadastro feito com sucesso')
+              this.router.navigate(['/home'])
+            }
+            else{
+              window.alert('Preencha os campos corretamente')    
+            }
+          },
+          error: (err) => {
+            console.log('error', err)
+            if(err.statusText == 'OK'){
+              if(err.status == 500){
+                window.alert('Funcionário já cadastrado')
+              }
+              else{
+                window.alert('Ocorreu um erro\n'+ err.message)
+              }
+            }else{
+              window.alert('Ocorreu um erro de conexão')
+            }        
+          },
+          complete: () => console.log("Completo")
+        })
+      }else{
+        window.alert('A senha precisa ter 5 dígitos')
       }
-    )
+    }
+    else{
+      window.alert('Preencha os campos corretamente')
+    }
+    console.log(this.funcCadastro)
   }
 
   btCancelar(){

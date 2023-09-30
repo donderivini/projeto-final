@@ -27,18 +27,50 @@ export class CadastroFuncionarioComponent implements OnInit{
   }
 
   cadastrar(){
+    this.funcLogin.nome = this.funcLogin.nome.trim()
+    this.funcLogin.login = this.funcLogin.login.trim()
+    this.funcLogin.senha = this.funcLogin.senha.trim() 
+    this.funcLogin.email = this.funcLogin.email.trim()   
     console.log(this.funcLogin)
-    this.funcionario_service.createCliente(this.funcLogin).subscribe(
-      (response) => {
-        if (response != null){
-          window.alert('Cadastro feito com sucesso')
-          this.router.navigate(['/home'])
-        }
-        else{
-          window.alert('Preencha os campos corretamente')
-        }
+    if(this.funcLogin.nome != ''
+    && this.funcLogin.login != ''
+    && this.funcLogin.senha != ''
+    && this.funcLogin.email != ''
+    && this.funcLogin.idEmpresa != ''){
+      if(this.funcLogin.senha.toString().length >= 5){
+        this.funcionario_service.createCliente(this.funcLogin).subscribe({
+          next: (data) => {
+            if (data != null){
+              window.alert('Cadastro feito com sucesso')
+              this.router.navigate(['/home'])
+            }
+            else{
+              window.alert('Preencha os campos corretamente')    
+            }
+          },
+          error: (err) => {
+            console.log('error', err)
+            if(err.statusText == 'OK'){
+              if(err.status == 500){
+                window.alert('Funcionário já cadastrado')
+              }
+              else{
+                window.alert('Ocorreu um erro\n'+ err.message)
+              }
+            }else{
+              window.alert('Ocorreu um erro de conexão')
+            }        
+          },
+          complete: () => console.log("Completo")
+        })
+      }else{
+        window.alert('A senha precisa ter 5 dígitos')
       }
-    )
+    }
+    else{
+      window.alert('Preencha os campos corretamente')
+    }
+    console.log(this.funcLogin)
   }
   
   btCancelar(){
