@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<!-- /*lugar para selecionar empresa ,input text , botão cadastrar,lista de frotas -->
+<div class="row justify-content-center my-5">
+    <form class="formulario form-group my-4">
+        <label for="">Empresa</label> 
+        <select name="empresa" class="form-control" [(ngModel)]="idEmpresa" id="" (change)="setLista()">
+            <option value="0">Selecione a Empresa</option>
+            <option value="{{item.id}}" *ngFor="let item of listaEmpresas">{{item.nome}}</option>
+        </select>
+        <div *ngIf="idEmpresa!= 0">
+            <label for="">Frotas</label> 
+            <select name="frota" class="form-control" [(ngModel)]="idFrota" (change)="setFrota()">
+                <option value="0">-Selecione a Frota-</option>
+                <option value="{{item.id}}" *ngFor="let item of listaFrotas">{{item.nome}}</option>
+            </select>
+        </div>
+        <div class="form-group" *ngIf="idFrota != 0 && idEmpresa != 0">
+            <label for="inputName">Nome da Frota</label>
+            <input type="text" class="form-control" id="inputName" name="nome" [(ngModel)]="frota.nome">
+        </div>
+        <div class="d-grid gap-2 mt-2">
+            <button (click)="btAtualizar()" type="submit" class="btn" >Atualizar</button>
+            <button (click)="btDelete()" type="submit" class="btn" >Delete</button>
+            <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102);">Cancelar</button>
+        </div>
+    </form>
+</div>
+<app-rodape></app-rodape>

@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="corpo">
+      <form class="cadastrar mb-4" >
+        <div class="form-group" >
+            
+            <label for="nomeEmpresa">Empresa</label>
+            <select class="form-control" name="empresa" id="nomeEmpresa" [(ngModel)]="idEmpresa" (change)="setEmpresa()">
+                <option value="0" selected>-Selecione a empresa-</option>
+                <option *ngFor="let item of listaEmpresas" value="{{item.id}}">{{item.nome}}</option>
+            </select>
+            <div *ngIf="idEmpresa != 0">
+                <label for="inputName">Nome</label>
+                <input type="text" class="form-control" id="inputName" [(ngModel)]="empresaUpdate.nome" name="nome">
+                
+                <label for="inputAddress">Endereço</label>
+                <input type="text" class="form-control" id="inputAddress" [(ngModel)]="empresaUpdate.endereco" name="endereco">
+                            
+                <label for="inputCity">Cidade</label>
+                <input type="text" class="form-control" id="inputCity" [(ngModel)]="empresaUpdate.cidade" name="cidade">
+                
+                <label for="inputEstado">Estado</label>
+                <select id="inputEstado" class="form-control" [(ngModel)]="empresaUpdate.estado" name="estado">
+                    <option value="" selected>-Selecione o estado-</option>
+                    <option value="ACRE">AC</option>
+                    <option value="ALAGOAS">AL</option>
+                    <option value="AMAPA">AP</option>
+                    <option value="AMAZONAS">AM</option>
+                    <option value="BAHIA">BA</option>
+                    <option value="CEARA">CE</option>
+                    <option value="DISTRITO_FEDERAL">DF</option>
+                    <option value="ESPIRITO_SANTO">ES</option>
+                    <option value="GOIAS">GO</option>
+                    <option value="MARANHAO">MA</option>
+                    <option value="MATO_GROSSO">MT</option>
+                    <option value="MATO_GROSSO_DO_SUL">MS</option>
+                    <option value="MINAS_GERAIS">MG</option>
+                    <option value="PARA">PA</option>
+                    <option value="PARAIBA">PB</option>
+                    <option value="PARANA">PR</option>
+                    <option value="PERNAMBUCO">PE</option>
+                    <option value="PIAUI">PI</option>
+                    <option value="RIO_DE_JANEIRO">RJ</option>
+                    <option value="RIO_GRANDE_DO_NORTE">RN</option>
+                    <option value="RIO_GRANDE_DO_SUL">RS</option>
+                    <option value="RONDONIA">RO</option>
+                    <option value="RORAIMA">RR</option>
+                    <option value="SANTA_CATARINA">SC</option>
+                    <option value="SAO_PAULO">SP</option>
+                    <option value="SERGIPE">SE</option>
+                    <option value="TOCANTINS">TO</option>                
+                </select>
+            </div>
+        </div>
+        <button (click)="btAtualizar()" class="btn" style="color: white; width: 100%;">Atualizar</button>
+        <button (click)="btDeletar()" class="btn" style="color: white; width: 100%;">Deletar</button>
+        <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102); color: white; width: 100%;">Cancelar</button>
+          
+                
+        </form>
+        
+    </div>
+  </div>
+  <app-rodape>  </app-rodape>

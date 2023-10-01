@@ -44,6 +44,15 @@
             <button (click)="goToCadastroFrotas()" class="btn-2 rounded-bottom" type="button" *ngIf="cadastrar">NOVA FROTA</button>
           </div>
         </div>
+        <div>
+          <button (click)="btGerenciar()" class="btn" type="button" *ngIf="gerencia">GERENCIAR</button>
+          <div class="px-1">
+            <button (click)="goToUpdateFuncionario()" class="btn-2 rounded-bottom" type="button" *ngIf="gerenciar">USUARIOS</button>
+            <button (click)="goToUpdateFuncionarioInterno()" class="btn-2 rounded-bottom" type="button" *ngIf="gerenciar">USUARIOS FHR</button>
+            <button (click)="goToUpdateEmpresa()" class="btn-2 rounded-bottom" type="button" *ngIf="gerenciar">EMPRESAS</button>
+            <button (click)="goToUpdateFrotas()" class="btn-2 rounded-bottom" type="button" *ngIf="gerenciar">FROTAS</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col">

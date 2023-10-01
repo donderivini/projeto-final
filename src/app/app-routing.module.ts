@@ -8,6 +8,9 @@ import { CadastroFuncionarioInternoComponent } from './cadastro-funcionario-inte
 import { CadastroFrotaComponent } from './cadastro-frota/cadastro-frota.component';
 import { CadastroRegistroComponent } from './cadastro-registro/cadastro-registro.component';
 import { UpdateFuncionarioInternoComponent } from './update-funcionario-interno/update-funcionario-interno.component';
+import { UpdateFuncionarioComponent } from './update-funcionario/update-funcionario.component';
+import { UpdateEmpresaComponent } from './update-empresa/update-empresa.component';
+import { UpdateFrotaComponent } from './update-frota/update-frota.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -17,7 +20,10 @@ const routes: Routes = [
   {path: 'cadastro-funcionario-interno', component: CadastroFuncionarioInternoComponent},
   {path: 'cadastro-frota', component: CadastroFrotaComponent},
   {path: 'cadastro-registro', component: CadastroRegistroComponent},
-  {path: 'update-funcionario-interno', component: UpdateFuncionarioInternoComponent}
+  {path: 'update-funcionario-interno', component: UpdateFuncionarioInternoComponent},
+  {path: 'update-funcionario', component: UpdateFuncionarioComponent},
+  {path: 'update-empresa', component: UpdateEmpresaComponent},
+  {path: 'update-frota', component: UpdateFrotaComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,41 @@
+.nav{
+    background-color: 	#483D8B;
+    color: #DCDCDC;
+}
+
+body{
+    justify-content: center;
+    align-items: center;
+}
+
+.corpo{
+    margin-top: 100px;
+    width: 45%;
+    min-width: 225px;
+}
+
+.cadastrar{
+    background-color: rgba(72, 61, 139, 0.8);
+    border-radius: 2%;
+    border: 3px solid #fcb903fd;
+    align-items: center;
+    font-weight: bold;
+    padding: 30px;
+}
+
+.foto{
+    padding: 20px;
+    align-items: center;
+}
+
+.form-group{
+    color:#fcb903fd;
+}
+
+.btn {
+    margin-top: 10px;
+    background-color: #fcb903fd;
+    font-weight: bold;
+    border: #fcb903fd;
+    text-align: center;
+}

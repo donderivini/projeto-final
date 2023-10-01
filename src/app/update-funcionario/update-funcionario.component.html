@@ -7,22 +7,17 @@
         <label for="inputLogin">Login</label>
         <select class="form-control" id="inputLogin" name="cargo" [(ngModel)]="idFuncionario" (change)="setFuncionario()">
           <option value="0" selected>-Selecione o login-</option>
-          <option *ngFor="let item of listaInternos" value="{{item.id}}">{{item.login}}</option>
+          <option *ngFor="let item of listaClientes" value="{{item.id}}">{{item.login}}</option>
         </select>
         <div *ngIf="idFuncionario != 0" class="mt-2">
-          <label for="">Informações do funcionario FHR:</label>
+          <label for="">Informações do funcionario:</label>
           <ul class="list-group">
             <li class="list-group-item">Nome: {{funcionarioUpdate.nome}}</li>
+            <li class="list-group-item">Empresa: {{funcionario.empresa.nome}}</li>
             <li class="list-group-item">Email: {{funcionarioUpdate.email}}</li>
           </ul>
-          <label for="inputCargo">Cargo</label>
-          <select class="form-control" id="inputCargo" [(ngModel)]="funcionarioUpdate.cargo" name="cargo">
-            <option value="GERENCIA">Gerência</option>
-            <option value="MANUTENCAO">Manutenção</option>
-          </select>
         </div>
         <div class="d-grid gap-2 mt-3">
-          <button (click)="btAtualizar()" type="submit" class="btn" >Atualizar</button>
           <button (click)="btDeletar()" type="submit" class="btn" >Deletar usuário</button>
           <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102);">Cancelar</button>
         </div>

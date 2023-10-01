@@ -22,11 +22,15 @@ export class CadastroFrotaComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.funcionarioService.getFuncionario() != null){
-      this.empresaSerice.findAll().subscribe(
-        (response) => {
-          this.listaEmpresas = response
-        }
-      )
+      if(this.funcionarioService.getFuncionario().cargo == 'GERENCIA'){
+        this.empresaSerice.findAll().subscribe(
+          (response) => {
+            this.listaEmpresas = response
+          }
+        )
+      }else{
+        this.router.navigate(['/home'])
+      }
     }else{
       this.router.navigate(['/'])
     }

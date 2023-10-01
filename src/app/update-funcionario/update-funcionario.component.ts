@@ -1,30 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FuncionarioService } from '../services/funcionario-service.service';
+
 @Component({
-  selector: 'app-update-funcionario-interno',
-  templateUrl: './update-funcionario-interno.component.html',
-  styleUrls: ['./update-funcionario-interno.component.css']
+  selector: 'app-update-funcionario',
+  templateUrl: './update-funcionario.component.html',
+  styleUrls: ['./update-funcionario.component.css']
 })
-export class UpdateFuncionarioInternoComponent implements OnInit {
+export class UpdateFuncionarioComponent implements OnInit {
 
 
   constructor(private router:Router,private funcionario_service:FuncionarioService){}
 
   funcionario: any
 
-  funcionarioUpdate = {nome: '', senha: '', email: '', cargo: '', ativo: true}
+  funcionarioUpdate = {nome: '', senha: '', email: '', ativo: true}
 
   idFuncionario: any = 0
 
-  listaInternos: any[]=[]
+  listaClientes: any[]=[]
 
   ngOnInit(): void {
     if(this.funcionario_service.getFuncionario() != null){
       if(this.funcionario_service.getFuncionario().cargo == 'GERENCIA'){
-        this.funcionario_service.findAllInterno().subscribe(
+        this.funcionario_service.findAllCliente().subscribe(
           (response) => {
-            this.listaInternos = response
+            this.listaClientes = response
           }
         )
       }else{
@@ -44,7 +45,6 @@ export class UpdateFuncionarioInternoComponent implements OnInit {
           this.funcionarioUpdate.nome = this.funcionario.nome
           this.funcionarioUpdate.senha = this.funcionario.senha
           this.funcionarioUpdate.email = this.funcionario.email
-          this.funcionarioUpdate.cargo = this.funcionario.cargo
           this.funcionarioUpdate.ativo = this.funcionario.ativo
         }
       )
@@ -83,7 +83,7 @@ export class UpdateFuncionarioInternoComponent implements OnInit {
 
   btDeletar(){
     if(this.idFuncionario != 0){
-      if(window.confirm('Deletar funcionario?')){
+      if(window.confirm('Deletar funcionario do sistema?')){
         this.funcionarioUpdate.ativo = false
         this.funcionario_service.updateInterno(this.idFuncionario, this.funcionarioUpdate).subscribe({
           next: (data) => {

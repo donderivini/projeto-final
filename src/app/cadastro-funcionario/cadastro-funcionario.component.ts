@@ -20,11 +20,15 @@ export class CadastroFuncionarioComponent implements OnInit{
 
   ngOnInit(): void {
     if(this.funcionario_service.getFuncionario() != null){
-      this.empresa_service.findAll().subscribe(
-        (response) => {
-          this.listaEmpresas = response
-        }
-      )
+      if(this.funcionario_service.getFuncionario().cargo == 'GERENCIA'){
+        this.empresa_service.findAll().subscribe(
+          (response) => {
+            this.listaEmpresas = response
+          }
+        )
+      }else{
+        this.router.navigate(['/home'])
+      }
     }else{
       this.router.navigate(['/'])
     }

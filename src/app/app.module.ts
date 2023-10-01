@@ -17,6 +17,9 @@ import { CadastroFuncionarioInternoComponent } from './cadastro-funcionario-inte
 import { CadastroFrotaComponent } from './cadastro-frota/cadastro-frota.component';
 import { CadastroRegistroComponent } from './cadastro-registro/cadastro-registro.component';
 import { UpdateFuncionarioInternoComponent } from './update-funcionario-interno/update-funcionario-interno.component';
+import { UpdateFuncionarioComponent } from './update-funcionario/update-funcionario.component';
+import { UpdateEmpresaComponent } from './update-empresa/update-empresa.component';
+import { UpdateFrotaComponent } from './update-frota/update-frota.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { UpdateFuncionarioInternoComponent } from './update-funcionario-interno/
     CadastroFuncionarioInternoComponent,
     CadastroFrotaComponent,
     CadastroRegistroComponent,
-    UpdateFuncionarioInternoComponent
+    UpdateFuncionarioInternoComponent,
+    UpdateFuncionarioComponent,
+    UpdateEmpresaComponent,
+    UpdateFrotaComponent
   ],
   imports: [
     BrowserModule,

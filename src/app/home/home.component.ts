@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit{
   cliente: boolean = true
   gerencia: boolean = false
   cadastrar: boolean = false
+  gerenciar: boolean = false
 
   listaEmpresas: any[]=[]
   listaFrotas: any[]=[]
@@ -234,5 +235,25 @@ export class HomeComponent implements OnInit{
 
   btCadastrar(){
     this.cadastrar = !this.cadastrar
+  }
+
+  goToUpdateFuncionario(){
+    this.router.navigate(['/update-funcionario'])
+  }
+
+  goToUpdateFuncionarioInterno(){
+    this.router.navigate(['/update-funcionario-interno'])
+  }
+
+  goToUpdateEmpresa(){
+    this.router.navigate(['/update-empresa'])
+  }
+
+  goToUpdateFrotas(){
+    this.router.navigate(['/update-frota'])
+  }
+
+  btGerenciar(){
+    this.gerenciar = !this.gerenciar
   }
 }

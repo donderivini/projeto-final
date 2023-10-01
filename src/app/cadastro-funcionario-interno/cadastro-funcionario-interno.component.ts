@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FuncionarioService } from '../services/funcionario-service.service';
 
@@ -8,13 +8,23 @@ import { FuncionarioService } from '../services/funcionario-service.service';
   templateUrl: './cadastro-funcionario-interno.component.html',
   styleUrls: ['./cadastro-funcionario-interno.component.css']
 })
-export class CadastroFuncionarioInternoComponent {
+export class CadastroFuncionarioInternoComponent implements OnInit{
 
   constructor(private router:Router, private funcionario_service: FuncionarioService){}
 
   funcCadastro= {nome:'',login: '', senha: '', email: '', cargo:''}
 
   funcionario: any;
+
+  ngOnInit(): void {
+    if(this.funcionario_service.getFuncionario() != null){
+      if(this.funcionario_service.getFuncionario().cargo != 'GERENCIA'){
+        this.router.navigate(['/home'])
+      }
+    }else{
+      this.router.navigate(['/'])
+    }      
+  }
 
   setCadastroInterno(){
     this.funcCadastro.nome = this.funcCadastro.nome.trim()
