@@ -1,27 +1,26 @@
 <app-navbar></app-navbar>
 <!-- /*lugar para selecionar empresa ,input text , botão cadastrar,lista de frotas -->
-<br><br><br><br><br><br>
-<form class="formulario mx-auto">
-    <label for="">Empresa</label> 
-    <br>     
-    <select name="empresa" [(ngModel)]="frota.idEmpresa" id="" (change)="setLista()">
-        <option value="0">Selecione a Empresa</option>
-        <option value="{{item.id}}" *ngFor="let item of listaEmpresas">{{item.nome}}</option>
-    </select>
-        <br>
-        <ul class="lista mt-3" *ngIf="frota.idEmpresa != 0">
-            <h5 class="titulo">Frotas</h5>
-            <li *ngFor="let item of listaFrotas; trackBy:trackBy">
+<div class="row justify-content-center my-5">
+    <form class="formulario form-group my-4">
+        <label for="">Empresa</label> 
+        <select name="empresa" class="form-control" [(ngModel)]="frota.idEmpresa" id="" (change)="setLista()">
+            <option value="0">Selecione a Empresa</option>
+            <option value="{{item.id}}" *ngFor="let item of listaEmpresas">{{item.nome}}</option>
+        </select>
+        <ul class="list-group border border-primary-subtle mt-2" *ngIf="frota.idEmpresa != 0">
+            <li style="border-bottom: 1px solid black;" class="list-group-item">FROTAS</li>
+            <li class="list-group-item" *ngFor="let item of listaFrotas; trackBy:trackBy">
                 {{item.nome}}
             </li>
         </ul>
         <div class="form-group">
             <label for="inputName">Nome da Frota</label>
             <input type="text" class="form-control" id="inputName" name="nome" [(ngModel)]="frota.nome">
-          </div>
+            </div>
         <div class="d-grid gap-2 mt-2">
             <button (click)="cadastrar()" type="submit" class="btn" >Adicionar Frota</button>
             <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102);">Cancelar</button>
         </div>
-</form>
+    </form>
+</div>
 <app-rodape></app-rodape>

@@ -35,10 +35,15 @@
 
       <div id="area-botoes" class="d-grid gap-2 mt-2">
         <button (click)="goToCadastroRegistro()" class="btn" type="button">NOVO REGISTRO</button>
-        <button (click)="goToCadastroFuncionario()" class="btn" type="button" *ngIf="gerencia">NOVO USUARIO</button>
-        <button (click)="goToCadastroFuncionarioInterno()" class="btn" type="button" *ngIf="gerencia">NOVO USUARIO FHR</button>
-        <button (click)="goToCadastroEmpresa()" class="btn" type="button" *ngIf="gerencia">NOVA EMPRESA</button>
-        <button (click)="goToCadastroFrotas()" class="btn" type="button" *ngIf="gerencia">NOVA FROTA</button>
+        <div>
+          <button (click)="btCadastrar()" class="btn" type="button" *ngIf="gerencia">CADASTRAR</button>
+          <div class="px-1">
+            <button (click)="goToCadastroFuncionario()" class="btn-2 rounded-bottom" type="button" *ngIf="cadastrar">NOVO USUARIO</button>
+            <button (click)="goToCadastroFuncionarioInterno()" class="btn-2 rounded-bottom" type="button" *ngIf="cadastrar">NOVO USUARIO FHR</button>
+            <button (click)="goToCadastroEmpresa()" class="btn-2 rounded-bottom" type="button" *ngIf="cadastrar">NOVA EMPRESA</button>
+            <button (click)="goToCadastroFrotas()" class="btn-2 rounded-bottom" type="button" *ngIf="cadastrar">NOVA FROTA</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col">

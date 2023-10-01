@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit{
 
   cliente: boolean = true
   gerencia: boolean = false
+  cadastrar: boolean = false
 
   listaEmpresas: any[]=[]
   listaFrotas: any[]=[]
@@ -231,14 +232,7 @@ export class HomeComponent implements OnInit{
     this.router.navigate(['/cadastro-frota'])
   }
 
-  //  setCadastro(){
-  //   if(this.cadastro == "novoUsuario")
-  //   this.goToCadastroFuncionario();
-  //   if(this.cadastro == "novoFhr")
-  //   this.goToCadastroFuncionarioInterno();
-  //   if(this.cadastro == "novaEmpresa")
-  //   this.goToCadastroEmpresa();
-  //   if(this.cadastro == "novaFrota")
-  //   this.goToCadastroFrotas()
-  //}
+  btCadastrar(){
+    this.cadastrar = !this.cadastrar
+  }
 }
