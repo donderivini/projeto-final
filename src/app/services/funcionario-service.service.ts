@@ -10,8 +10,8 @@ export class FuncionarioService {
   private funcionario: any
 
   constructor(private http: HttpClient){
-    // this.funcionarioUrl= 'http://192.168.15.118:8080/funcionarios';
-    this.funcionarioUrl= 'http://localhost:8080/funcionarios';
+    this.funcionarioUrl= 'http://192.168.15.118:8080/funcionarios';
+    // this.funcionarioUrl= 'http://localhost:8080/funcionarios';
   }
 
   public setFuncionario(funcionario: any){
@@ -70,8 +70,8 @@ export class FuncionarioService {
     return this.http.get<any[]>(`${this.funcionarioUrl}/${id}/registros/${categoria}`)
   }
 
-  public delete(id: Number): void{
-    this.http.delete(`${this.funcionarioUrl}/delete/${id}`)
+  public delete(id: Number){
+    return this.http.delete(`${this.funcionarioUrl}/delete/${id}`)
   }
 
   login(funcionario_login: any) {

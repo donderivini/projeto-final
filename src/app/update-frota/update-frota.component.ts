@@ -112,9 +112,22 @@ export class UpdateFrotaComponent  implements OnInit {
       window.alert('Selecione a frota')
     }else{
       if(window.confirm('Deletar a frota ' + this.frota.nome + '?')){
-        this.frotaService.delete(this.idFrota)
-        window.alert('Frota deletada')
-        this.router.navigate(['/home'])
+        this.frotaService.delete(this.idFrota).subscribe({
+          next: (data) => {
+            this.listaFrotas = this.listaFrotas.filter((item) => {item.id !== this.idFrota})
+            window.alert('Frota deletada')
+            this.router.navigate(['/home'])
+          },
+          error: (err) => {
+            console.log('error', err)
+            if(err.statusText == 'OK'){
+              window.alert('Ocorreu um erro\n'+ err.message)
+            }else{
+              window.alert('Ocorreu um erro de conexão')
+            }        
+          }
+        })
+        
       }
     }
   }

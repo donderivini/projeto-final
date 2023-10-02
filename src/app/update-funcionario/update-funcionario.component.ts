@@ -25,7 +25,11 @@ export class UpdateFuncionarioComponent implements OnInit {
       if(this.funcionario_service.getFuncionario().cargo == 'GERENCIA'){
         this.funcionario_service.findAllCliente().subscribe(
           (response) => {
-            this.listaClientes = response
+            response.forEach((item) => {
+              if(item.ativo){
+                this.listaClientes.push(item)
+              }
+            })
           }
         )
       }else{

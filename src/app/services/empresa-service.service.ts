@@ -10,8 +10,8 @@ export class EmpresaServiceService {
   private empresaUrl
 
   constructor(private http:HttpClient) { 
-    // this.empresaUrl = 'http://192.168.15.118:8080/empresas'
-    this.empresaUrl= 'http://localhost:8080/empresas';
+    this.empresaUrl = 'http://192.168.15.118:8080/empresas'
+    // this.empresaUrl= 'http://localhost:8080/empresas';
   }
 
   public create(empresa: any){
@@ -55,7 +55,7 @@ export class EmpresaServiceService {
   }
 
   public delete(id: Number){
-    this.http.delete(`${this.empresaUrl}/delete/${id}`)
+    return this.http.delete<any>(`${this.empresaUrl}/delete/${id}`)
   }
 
   private handleError(error: HttpErrorResponse) {
