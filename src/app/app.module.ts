@@ -20,6 +20,7 @@ import { UpdateFuncionarioInternoComponent } from './update-funcionario-interno/
 import { UpdateFuncionarioComponent } from './update-funcionario/update-funcionario.component';
 import { UpdateEmpresaComponent } from './update-empresa/update-empresa.component';
 import { UpdateFrotaComponent } from './update-frota/update-frota.component';
+import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
 import { ConsultaRegistroComponent } from './consulta-registro/consulta-registro.component';
 
 @NgModule({
@@ -37,6 +38,8 @@ import { ConsultaRegistroComponent } from './consulta-registro/consulta-registro
     UpdateFuncionarioInternoComponent,
     UpdateFuncionarioComponent,
     UpdateEmpresaComponent,
+    UpdateFrotaComponent,
+    MeuPerfilComponent
     UpdateFrotaComponent,
     ConsultaRegistroComponent
   ],

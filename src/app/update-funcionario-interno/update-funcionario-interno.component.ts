@@ -24,7 +24,11 @@ export class UpdateFuncionarioInternoComponent implements OnInit {
       if(this.funcionario_service.getFuncionario().cargo == 'GERENCIA'){
         this.funcionario_service.findAllInterno().subscribe(
           (response) => {
-            this.listaInternos = response
+            response.forEach((item) => {
+              if(item.ativo){
+                this.listaInternos.push(item)
+              }
+            })
           }
         )
       }else{

@@ -58,9 +58,23 @@ export class UpdateEmpresaComponent implements OnInit{
   btDeletar(){
     if(this.idEmpresa != 0){
       if(window.confirm('Deletar a empresa ' + this.empresa.nome + ' do sistema?')){
-        this.empresa_service.delete(this.idEmpresa)
-        window.alert('Empresa deletada')
-        this.router.navigate(['/home'])
+        console.log(this.empresa)
+        this.empresa_service.delete(this.empresa.id).subscribe({
+          next: (data) => {
+            this.listaEmpresas = this.listaEmpresas.filter((item) => {item.id !== this.empresa.id})
+            window.alert('Empresa deletada')
+            this.router.navigate(['/home'])
+          },          
+          error: (err) => {
+            console.log('error', err)
+            if(err.statusText == 'OK'){                
+              window.alert('Ocorreu um erro\n'+ err.message)                
+            }else{
+              window.alert('Ocorreu um erro de conexão')
+            }        
+          }
+        });
+        
       }
     }else{
       window.alert('Selecione uma empresa')
