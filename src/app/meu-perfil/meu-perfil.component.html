@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="corpo">
+      <form class="cadastrar mb-4" >
+        <div class="form-group" >
+
+            <p>Usuário: {{funcionario.login}}</p>
+            <p *ngIf="cliente">Empresa: {{funcionario.empresa}}</p>
+            <p *ngIf="!cliente">{{funcionario.cargo}} FHR</p>
+            <label for="inputName">Nome</label>
+            <input (change)="editarUsuario()" type="text" class="form-control" id="inputName" [(ngModel)]="funcionario.nome" name="nome">
+            <label for="inputEmail">Email</label>
+            <input (change)="editarUsuario()" type="text" class="form-control" id="inputEmail" [(ngModel)]="funcionario.email" name="email">
+            <label for="inputSenha1">Nova Senha</label>
+            <input (change)="editarUsuario()" type="password" class="form-control" id="inputSenha1" [(ngModel)]="senha1" name="senha1">
+            <div *ngIf="senha1 != ''">
+                <label for="inputSenha2">Confirmar Nova Senha</label>
+                <input (change)="editarUsuario()" type="password" class="form-control" id="inputSenha2" [(ngModel)]="senha2" name="senha2">
+            </div>
+        </div>
+        <button *ngIf="editando" (click)="btAtualizar()" class="btn" style="color: white; width: 100%;">Salvar</button>
+        <button (click)="btDesativar()" class="btn" style="color: white; width: 100%;background-color:red">Desativar Conta</button>
+        <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102); color: white; width: 100%;">Cancelar</button>
+          
+                
+        </form>
+        
+    </div>
+  </div>
+<app-rodape>  </app-rodape>

@@ -213,6 +213,10 @@ export class HomeComponent implements OnInit{
     this.router.navigate(['/'])
   }
 
+  perfil(){
+    this.router.navigate(['/meu-perfil'])
+  }
+
   goToCadastroFuncionario(){
     this.router.navigate(['/cadastro-funcionario'])
   }
