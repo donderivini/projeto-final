@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,6 +11,18 @@ export class ArquivosServiceService {
   constructor(private http: HttpClient) { 
     // this.arquivosUrl= 'http://192.168.15.118:8080/arquivos';
     this.arquivosUrl= 'http://localhost:8080/arquivos';
+  }
+
+  upload(file: File, idRegistro: Number) {
+    const formData: FormData = new FormData()
+
+    formData.append('file', file)
+
+    const req = new HttpRequest('POST', `${this.arquivosUrl}/upload/${idRegistro}`, formData, {
+      reportProgress: true, responseType: 'json'
+    })
+
+    return this.http.request(req)
   }
 
   public get(id: Number){

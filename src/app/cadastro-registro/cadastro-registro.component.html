@@ -2,43 +2,79 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
 <form class="formulario mx-auto">
-    <div class="form-group">
+    <div class="form-group" *ngIf="!cadastrado">
       <label for="exampleFormControlInput1">Título:</label>
-      <input type="text" class="form-control" [(ngModel)]="registro.titulo" id="exampleFormControlInput1">
+      <input type="text" class="form-control" [(ngModel)]="registro.titulo" id="exampleFormControlInput1" name="titulo">
       <label for="inputDescricao">Descrição:</label>
-      <textarea id="inputDescricao" class="form-control" [(ngModel)]="registro.descricao" aria-label="With textarea"></textarea>
-      <label for="">Empresa</label>      
-      <select onchange="setFrotas()" class="form-control" [(ngModel)]="idEmpresa" name="empresa">
-        <option value="" selected>-Selecione a empresa-</option>
-        <option *ngFor="let item of listaEmpresas" value="{{item.id}}">{{item.nome}}</option>
-      </select>
+      <textarea maxlength="255" id="inputDescricao" class="form-control" [(ngModel)]="registro.descricao" aria-label="With textarea" name="descricao"></textarea>
+      <div *ngIf="!cliente">
+        <label for="">Empresa</label>      
+        <select (change)="setFrotas()" class="form-control" [(ngModel)]="idEmpresa" name="empresa">
+          <option value="0" selected>-Selecione a empresa-</option>
+          <option *ngFor="let item of listaEmpresas" value="{{item.id}}">{{item.nome}}</option>
+        </select>
+      </div>
       <label for="">Frota</label>      
-      <select class="form-control" [(ngModel)]="registro.idFrota" name="empresa">
-        <option value="" selected>-Selecione a frota-</option>
+      <select class="form-control" [(ngModel)]="idFrota" name="empresa">
+        <option value="0" selected>-Selecione a frota-</option>
         <option *ngFor="let item of listaFrotas" value="{{item.id}}">{{item.nome}}</option>
       </select>
       <label for="exampleFormControlSelect1">Selecione a categoria do registro:</label>
-      <select class="form-control" [(ngModel)]="registro.registroCategoria" id="exampleFormControlSelect1">
-        <option value="NOVO_LAUDO">Novo laudo</option>
+      <select class="form-control" [(ngModel)]="categoria" id="exampleFormControlSelect1" name="categoria">
+        <option value="" selected>-Selecione a categoria-</option>
+        <option *ngIf="!cliente" value="NOVO_LAUDO">Novo laudo</option>
         <option value="PROBLEMA_ENCONTRADO">Problema encontrado</option>
         <option value="PROBLEMA_SOLUCIONADO">Problema solucionado</option>
       </select>
     </div>
-      <div class="form-group">
-        <label for="exampleFormControlFile1">Anexar arquivo:</label><br>
-        <input type="file" (change)="onFileSelected($event)" class="form-control-file" id="exampleFormControlFile1">
+    <div class="form-group" *ngIf="cadastrado">
+      <label for="exampleFormControlFile1">Anexar arquivo:</label><br>
+      <input type="file" (change)="selectFile($event)" class="form-control-file" id="exampleFormControlFile1">
+
+      <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
+        Upload
+      </button>
+
+      <div *ngIf="currentFile" class="progress my-3">
+        <div
+          class="progress-bar progress-bar-info progress-bar-striped"
+          role="progressbar"
+          attr.aria-valuenow="{{ progress }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [ngStyle]="{ width: progress + '%' }"
+        >
+          {{ progress }}%
+        </div>
       </div>
-      <div class="container text-center mt-4">
+
+      <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
+
+      <div class="card mt-3">
+        <div class="card-header">List of Files</div>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let file of fileInfos" class="list-group-item">
+            <a href="{{file.url}}">{{file.name}}</a>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+      <div class="container text-center mt-4" *ngIf="!cadastrado">
         <div class="row">
           <div class="col">
             <button (click)="cadastrar()" type="submit" class="btn" style="width: 100%;">Cadastrar</button>
           </div>
           <div class="col">
             <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102); width: 100%;">Cancelar</button>
+          </div>
+        </div>
+      </div>
+      <div class="container text-center mt-4" *ngIf="cadastrado">
+        <div class="row">
+          <div class="col">
+            <button (click)="btCancelar()" type="submit" class="btn" style="width: 100%;">Finalizar</button>
           </div>
         </div>
       </div>

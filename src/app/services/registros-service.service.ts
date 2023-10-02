@@ -14,23 +14,23 @@ export class RegistrosServiceService {
   }
 
   public get(id: Number){
-    return this.http.get(`${this.registrosUrl}/${id}`)
+    return this.http.get<any>(`${this.registrosUrl}/${id}`)
   }
 
-  public getAllArquivos(id: Number) {
-    return this.http.get<any[]>(`${this.registrosUrl}/${id}/arquivos`)
+  public getAllArquivos(id: Number): Observable<any> {
+    return this.http.get(`${this.registrosUrl}/${id}/arquivos`)
   }
 
-  public create(registros: String) {
-    return this.http.post<any[]>(`${this.registrosUrl}/cadastro`, registros)
+  public create(registros: any) {
+    return this.http.post<any>(`${this.registrosUrl}/cadastro`, registros)
   }
 
-  public update(id: Number, registros: String) {
-    return this.http.put<any[]>(`${this.registrosUrl}/update/${id}`, registros)
+  public update(id: Number, registros: any) {
+    return this.http.put<any>(`${this.registrosUrl}/update/${id}`, registros)
   }
 
   public delete(id: Number) {
-    return this.http.delete<any[]>(`${this.registrosUrl}/delete/${id}`)
+    return this.http.delete(`${this.registrosUrl}/delete/${id}`)
   }
 
   public getAll(){
