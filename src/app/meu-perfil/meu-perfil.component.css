@@ -1,0 +1,56 @@
+.nav{
+    background-color: 	#483D8B;
+    color: #DCDCDC;
+}
+
+body{
+    justify-content: center;
+    align-items: center;
+}
+
+h5 span{
+    color: white;
+}
+
+.corpo{
+    margin-top: 100px;
+    width: 70%;
+    min-width: 550px;
+}
+
+.cadastrar{
+    background-color: rgba(72, 61, 139, 0.8);
+    border-radius: 2%;
+    border: 3px solid #fcb903fd;
+    align-items: center;
+    font-weight: bold;
+    padding: 30px;
+}
+
+.form-group{
+    color:#fcb903fd;
+}
+
+.btn {
+    margin-top: 10px;
+    background-color: #fcb903fd;
+    font-weight: bold;
+    border: #fcb903fd;
+    text-align: center;
+    color: white;
+}
+
+.row .col-2{
+    background: none;
+    border: none;
+    color:#fcb903fd;
+}
+
+.row .col-2:hover{
+    text-decoration: underline;
+}
+
+#area-botoes{
+    display: flex;
+    justify-content: space-between;
+}

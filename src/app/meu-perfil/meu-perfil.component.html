@@ -2,29 +2,42 @@
 <div class="container d-flex flex-column justify-content-center align-items-center">
     <div class="corpo">
       <form class="cadastrar mb-4" >
-        <div class="form-group" >
-
-            <p>Usuário: {{funcionario.login}}</p>
-            <p *ngIf="cliente">Empresa: {{funcionario.empresa}}</p>
-            <p *ngIf="!cliente">{{funcionario.cargo}} FHR</p>
-            <label for="inputName">Nome</label>
-            <input (change)="editarUsuario()" type="text" class="form-control" id="inputName" [(ngModel)]="funcionario.nome" name="nome">
-            <label for="inputEmail">Email</label>
-            <input (change)="editarUsuario()" type="text" class="form-control" id="inputEmail" [(ngModel)]="funcionario.email" name="email">
-            <label for="inputSenha1">Nova Senha</label>
-            <input (change)="editarUsuario()" type="password" class="form-control" id="inputSenha1" [(ngModel)]="senha1" name="senha1">
-            <div *ngIf="senha1 != ''">
-                <label for="inputSenha2">Confirmar Nova Senha</label>
-                <input (change)="editarUsuario()" type="password" class="form-control" id="inputSenha2" [(ngModel)]="senha2" name="senha2">
+        <div class="form-group">
+          <h5>Usuário: <span>{{funcionarioLogado.login}}</span></h5>
+          <h5 *ngIf="cliente">Empresa: <span>{{funcionarioLogado.empresa.nome}}</span></h5>
+          <h5 *ngIf="!cliente">{{funcionario.cargo}} FHR</h5><hr>
+          <div *ngIf="!edtNome" class="row">
+            <h5 class="col">Nome: <span>{{funcionario.nome}}</span></h5><button (click)="edtNome = true" class="col-2">Editar</button>
+          </div>
+          <div *ngIf="edtNome" class="row">
+            <h5>Nome: <span><input [(ngModel)]="funcionario.nome" style="width: 80%;" type="text" class="form-control" name="nome"></span></h5>
+          </div>
+          <div *ngIf="!edtEmail" class="row">
+            <h5 class="col">Email: <span>{{funcionario.email}}</span></h5><button (click)="edtEmail = true" class="col-2">Editar</button>
+          </div>
+          <div *ngIf="edtEmail" class="row">
+            <h5>Email: <span><input [(ngModel)]="funcionario.email" style="width: 81%;" type="text" class="form-control" name="email"></span></h5>
+          </div>
+            <button *ngIf="!edtSenha" (click)="edtSenha = true" class="btn">Trocar senha</button>
+          <div *ngIf="edtSenha"> 
+            <hr>
+            <div class="row">
+              <h6>Senha atual: <span><input [(ngModel)]="senhaAtual" style="width: 77%;" type="password" class="form-control" name="senhaAtual"></span></h6>
             </div>
-        </div>
-        <button *ngIf="editando" (click)="btAtualizar()" class="btn" style="color: white; width: 100%;">Salvar</button>
-        <button (click)="btDesativar()" class="btn" style="color: white; width: 100%;background-color:red">Desativar Conta</button>
-        <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102); color: white; width: 100%;">Cancelar</button>
-          
-                
-        </form>
-        
+            <div class="row">
+              <h6>Nova senha: <span><input [(ngModel)]="senhaNova" style="width: 77%;" type="password" class="form-control" name="senhaNova"></span></h6>
+            </div>
+            <div class="row">
+              <h6>Confirmar senha: <span><input [(ngModel)]="senhaConfirm" style="width: 70%;" type="password" class="form-control" name="senhaConfirm"></span></h6>
+            </div>
+          </div>
+          <div id="area-botoes">
+            <button (click)="btDesativar()" style="background-color: red;" class="btn" type="submit">Desativar conta</button>
+            <button (click)="btAtualizar()" *ngIf="edtNome || edtEmail || edtSenha" class="btn" type="submit">Salvar</button>
+            <button (click)="btCancelar()" style="background-color: rgb(44, 35, 102);" class="btn" type="submit">Retornar</button>
+          </div>
+        </div>   
+      </form>        
     </div>
   </div>
-<app-rodape>  </app-rodape>
+<app-rodape></app-rodape>

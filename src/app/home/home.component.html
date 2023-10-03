@@ -8,9 +8,9 @@
       <p *ngIf="!cliente">{{funcionario.cargo}} FHR</p>
       <p>{{funcionario.email}}</p>
     </div>
-    <div class="col-1">
-      <a href="" (click)="perfil()">PERFIL</a>
-      <a href="" (click)="logOut()">SAIR</a>
+    <div id="configs" class="col-1 d-flex flex-row-reverse">
+      <button (click)="logOut()">SAIR</button>
+      <button (click)="perfil()">PERFIL</button>
     </div>
   </div>
 

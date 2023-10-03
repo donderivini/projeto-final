@@ -12,185 +12,156 @@ export class MeuPerfilComponent implements OnInit{
 
   funcionarioCliente = {nome: '', senha: '', email: '', ativo: true}
   funcionarioInterno = {nome: '', senha: '', email: '',cargo: '', ativo: true}
+  funcionarioLogado: any
   funcionario: any
   cliente: boolean = true
-  editando: boolean = false
-  senha1: any = ''
-  senha2: any = ''
+
+  edtNome: boolean = false
+  edtEmail: boolean = false
+  edtSenha: boolean = false
+
+  senhaAtual: string =''
+  senhaNova: string =''
+  senhaConfirm: string =''
+
   ngOnInit(): void {
-      if (this.funcionario_service.getFuncionario() != null){
-        this.funcionario = this.funcionario_service.getFuncionario()
-        this.funcionarioCliente.nome = this.funcionario.nome
-        this.funcionarioCliente.senha = this.funcionario.senha
-        this.funcionarioCliente.email = this.funcionario.email
-        this.funcionarioInterno.nome = this.funcionario.nome
-        this.funcionarioInterno.senha = this.funcionario.senha
-        this.funcionarioInterno.email = this.funcionario.email
-        this.funcionarioInterno.cargo = this.funcionario.cargo
-        if (this.funcionario.empresa != null) {
+        this.funcionarioLogado = this.funcionario_service.getFuncionario()
+      if (this.funcionario_service.getFuncionario() != null){   
+        if (this.funcionarioLogado.empresa != null) {
           this.cliente = true
+          this.funcionarioCliente.nome = this.funcionarioLogado.nome
+          this.funcionarioCliente.senha = this.funcionarioLogado.senha
+          this.funcionarioCliente.email = this.funcionarioLogado.email
+          this.funcionario = this.funcionarioCliente
         }else{
           this.cliente = false
+          this.funcionarioInterno.nome = this.funcionarioLogado.nome
+          this.funcionarioInterno.senha = this.funcionarioLogado.senha
+          this.funcionarioInterno.email = this.funcionarioLogado.email
+          this.funcionarioInterno.cargo = this.funcionarioLogado.cargo
+          this.funcionario = this.funcionarioInterno
         }
       }else {
         this.router.navigate(['/'])
       }
   }
 
-  editarUsuario() {
-    this.editando = true
-  }
-
   btAtualizar() {
-    if(window.confirm('Salvar alterações?'))
-    {  if (this.funcionario.nome != '' && this.funcionario.email != ''){
-        this.funcionarioCliente.nome = this.funcionario.nome
-        this.funcionarioCliente.email = this.funcionario.email
-        this.funcionarioInterno.nome = this.funcionario.nome
-        this.funcionarioInterno.email = this.funcionario.email
-        if (this.senha1 != '') {
-          if (this.senha2 == '') {          
-            window.alert('Confirme a nova senha')
-          }else {
-            if (this.senha1 != this.senha2) {
-              window.alert('As senhas devem ser iguais')
-            }else{
-              if (this.senha1.length < 5) {
-                window.alert('Senha muito curta')
+    console.log(this.funcionario)
+    if(window.confirm('Salvar alterações?')){
+      let verif: boolean = true
+
+      this.edtNome? verif = (this.funcionario.nome != '' && this.funcionario.nome.length >= 5): null;
+      this.edtEmail? verif = (this.funcionario.email != '' && this.funcionario.email.length >= 5): null;
+      this.edtSenha? verif = (this.senhaAtual == this.funcionario.senha && this.senhaNova.length >= 5 && this.senhaNova===this.senhaConfirm): null;
+      
+      
+      if(verif){
+        this.edtSenha? this.funcionario.senha = this.senhaNova:null;
+        if(this.cliente){
+          this.funcionario_service.updateCliente(this.funcionarioLogado.id, this.funcionario).subscribe({
+            next: (data) => {
+              if(data != null){
+                window.alert('As alterações foram salvas.')
+                this.edtSenha? this.router.navigate(['/']) : this.router.navigate(['/home'])
+              }
+              else{ window.alert('Ocorreu um erro')}
+            },
+            error: (err) => {            
+              if(err.statusText == 'OK'){                
+                window.alert('Ocorreu um erro\n'+ err.message)                
               }else{
-                if(window.confirm('Salvar alterações?')){
-                  if(this.cliente) {
-                    this.funcionarioCliente.senha = this.senha1
-                    this.funcionario_service.updateCliente(this.funcionario.id, this.funcionarioCliente).subscribe({
-                      next: (data) => {
-                        if (data != null) {
-                          window.alert('Alterações salvas')
-                          this.router.navigate(['/home'])
-                        }else{
-                          window.alert('Ocorreu um erro')
-                        }
-                      },          
-                      error: (err) => {
-                        console.log('error', err)
-                        if(err.statusText == 'OK'){                
-                          window.alert('Ocorreu um erro\n'+ err.message)                
-                        }else{
-                          window.alert('Ocorreu um erro de conexão')
-                        }        
-                      }
-                    });
-                  }else{this.funcionarioInterno.senha = this.senha1
-                    this.funcionario_service.updateInterno(this.funcionario.id, this.funcionarioInterno).subscribe({
-                      next: (data) => {
-                        if (data != null) {
-                          window.alert('Alterações salvas')
-                          this.router.navigate(['/home'])
-                        }else{
-                          window.alert('Ocorreu um erro')
-                        }
-                      },          
-                      error: (err) => {
-                        console.log('error', err)
-                        if(err.statusText == 'OK'){                
-                          window.alert('Ocorreu um erro\n'+ err.message)                
-                        }else{
-                          window.alert('Ocorreu um erro de conexão')
-                        }        
-                      }
-                    });
-                  }
-                }
-              }
+                window.alert('Ocorreu um erro de conexão')
+              }        
             }
-          }
-        }else {
-          if(this.cliente) {
-            this.funcionario_service.updateCliente(this.funcionario.id, this.funcionarioCliente).subscribe({
-              next: (data) => {
-                if (data != null) {
-                  window.alert('Alterações salvas')
-                  this.router.navigate(['/home'])
-                }else{
-                  window.alert('Ocorreu um erro')
-                }
-              },          
-              error: (err) => {
-                console.log('error', err)
-                if(err.statusText == 'OK'){                
-                  window.alert('Ocorreu um erro\n'+ err.message)                
-                }else{
-                  window.alert('Ocorreu um erro de conexão')
-                }        
+          })
+        }
+        else{
+          this.funcionario_service.updateInterno(this.funcionarioLogado.id, this.funcionario).subscribe({
+            next: (data) => {
+              if(data != null){
+                window.alert('As alterações foram salvas.')
+                this.router.navigate(['/home'])
               }
-            });
-          }else{
-            this.funcionario_service.updateInterno(this.funcionario.id, this.funcionarioInterno).subscribe({
-              next: (data) => {
-                if (data != null) {
-                  window.alert('Alterações salvas')
-                  this.router.navigate(['/home'])
-                }else{
-                  window.alert('Ocorreu um erro')
-                }
-              },          
-              error: (err) => {
-                console.log('error', err)
-                if(err.statusText == 'OK'){                
-                  window.alert('Ocorreu um erro\n'+ err.message)                
-                }else{
-                  window.alert('Ocorreu um erro de conexão')
-                }        
-              }
-            });
-          }
+              else{ window.alert('Ocorreu um erro')}
+            },
+            error: (err) => {            
+              if(err.statusText == 'OK'){                
+                window.alert('Ocorreu um erro\n'+ err.message)                
+              }else{
+                window.alert('Ocorreu um erro de conexão')
+              }        
+            }
+          })
         }
       }else{
-        window.alert('Campo nome ou email vazios')
-      }}
+        verif = true
+
+        this.edtNome? verif = (this.funcionario.nome != ''):null;
+        this.edtEmail? verif = (this.funcionario.email != ''):null;
+        this.edtSenha? verif = (this.senhaAtual != '' && this.senhaNova != '' && this.senhaConfirm != ''):null;
+        
+        if(verif){
+          if(this.edtNome && this.funcionario.nome.length < 5){
+            window.alert('O nome deve possuir pelo menos 5 caracteres')
+          }
+          else if(this.edtEmail && this.funcionario.email.length < 5){
+            window.alert('Email inválido')
+          } else if (this.edtSenha){
+            if(this.funcionario.senha != this.senhaAtual){
+              window.alert('Senha incorreta!')
+            }
+            else if(this.senhaNova != this.senhaConfirm){
+              window.alert('As senhas não correspondem')
+            }
+            else if(this.senhaNova.length < 5){
+              window.alert('A nova senha deve ter pelo menos 5 caracteres')
+            }
+          }
+        }
+        else{ window.alert('Preencha os campos')}
+      }
+    }
   }
 
   btDesativar(){
-    if(window.confirm('Desativar sua conta?')){
-      this.funcionarioCliente.ativo = false
-      this.funcionarioInterno.ativo = false
+    if(window.confirm('Deletar conta?')){
+      this.funcionario.ativo = false
       if(this.cliente){
-        this.funcionario_service.updateCliente(this.funcionario.id, this.funcionarioCliente).subscribe({
+        this.funcionario_service.updateCliente(this.funcionarioLogado.id, this.funcionario).subscribe({
           next: (data) => {
-            if (data != null) {
-              window.alert('Conta deletada')
+            if(data != null){
+              window.alert('Sua conta foi desativada')
               this.router.navigate(['/'])
-            }else{
-              window.alert('Ocorreu um erro')
             }
-          },          
-          error: (err) => {
-            console.log('error', err)
+            else{ window.alert('Ocorreu um erro')}
+          },
+          error: (err) => {            
             if(err.statusText == 'OK'){                
               window.alert('Ocorreu um erro\n'+ err.message)                
             }else{
               window.alert('Ocorreu um erro de conexão')
             }        
           }
-        });
-      }else{
-        this.funcionario_service.updateInterno(this.funcionario.id, this.funcionarioInterno).subscribe({
+        })
+      }
+      else{
+        this.funcionario_service.updateInterno(this.funcionarioLogado.id, this.funcionario).subscribe({
           next: (data) => {
-            if (data != null) {
-              window.alert('Conta deletada')
+            if(data != null){
+              window.alert('Sua conta foi desativada')
               this.router.navigate(['/'])
-            }else{
-              window.alert('Ocorreu um erro')
             }
-          },          
-          error: (err) => {
-            console.log('error', err)
+            else{ window.alert('Ocorreu um erro')}
+          },
+          error: (err) => {            
             if(err.statusText == 'OK'){                
               window.alert('Ocorreu um erro\n'+ err.message)                
             }else{
               window.alert('Ocorreu um erro de conexão')
             }        
           }
-        });
+        })
       }
     }
   }
