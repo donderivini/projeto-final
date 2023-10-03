@@ -12,6 +12,7 @@ import { UpdateFuncionarioComponent } from './update-funcionario/update-funciona
 import { UpdateEmpresaComponent } from './update-empresa/update-empresa.component';
 import { UpdateFrotaComponent } from './update-frota/update-frota.component';
 import { MeuPerfilComponent } from './meu-perfil/meu-perfil.component';
+import { ConsultaRegistroComponent } from './consulta-registro/consulta-registro.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -25,7 +26,9 @@ const routes: Routes = [
   {path: 'update-funcionario', component: UpdateFuncionarioComponent},
   {path: 'update-empresa', component: UpdateEmpresaComponent},
   {path: 'update-frota', component: UpdateFrotaComponent},
-  {path: 'meu-perfil', component: MeuPerfilComponent}
+  {path: 'meu-perfil', component: MeuPerfilComponent},
+  {path: 'consulta-registro', component: ConsultaRegistroComponent}
+
 ];
 
 @NgModule({

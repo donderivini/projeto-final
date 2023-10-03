@@ -7,10 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class RegistrosServiceService {
   private registrosUrl
+  private registro: any
 
   constructor(private http: HttpClient) { 
-    this.registrosUrl= 'http://192.168.15.118:8080/registros';
-    // this.registrosUrl= 'http://localhost:8080/registros';
+    // this.registrosUrl= 'http://192.168.15.118:8080/registros';
+    this.registrosUrl= 'http://localhost:8080/registros';
   }
 
   public get(id: Number){
@@ -43,5 +44,13 @@ export class RegistrosServiceService {
 
   public getAllCategorias() {
     return this.http.get<any[]>(`${this.registrosUrl}/categorias`)
+  }
+
+  public getRegistro() {
+    return this.registro
+  }
+
+  public setRegistro(registro:any){
+    this.registro=registro
   }
 }

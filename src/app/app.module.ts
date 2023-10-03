@@ -39,7 +39,7 @@ import { ConsultaRegistroComponent } from './consulta-registro/consulta-registro
     UpdateFuncionarioComponent,
     UpdateEmpresaComponent,
     UpdateFrotaComponent,
-    MeuPerfilComponent
+    MeuPerfilComponent,
     UpdateFrotaComponent,
     ConsultaRegistroComponent
   ],
