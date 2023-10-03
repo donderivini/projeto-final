@@ -204,8 +204,21 @@ export class HomeComponent implements OnInit{
 
   }
 
-  printRegistro(titulo: any){
-    console.log(titulo)
+  mostraRegistro(id: any){
+    this.registroService.get(id).subscribe({
+      next: (data) => {
+        if(data != null){
+        this.registroService.setRegistro(data)
+        this.router.navigate(['/consulta-registro'])
+      } else window.alert('Ocorreu um erro!')
+      },
+      error: (err) => {
+        console.log('error', err)
+        this.registroService.setRegistro(null)
+        window.alert('Ocorreu um erro de conexão')
+      }
+
+    })
   }
 
   logOut(){

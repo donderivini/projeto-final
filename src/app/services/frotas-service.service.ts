@@ -9,8 +9,8 @@ export class FrotasServiceService {
   private frotaUrl;
 
   constructor(private http: HttpClient) { 
-    this.frotaUrl= 'http://192.168.15.118:8080/frotas';
-    // this.frotaUrl= 'http://localhost:8080/frotas';
+    //this.frotaUrl= 'http://192.168.15.118:8080/frotas';
+    this.frotaUrl= 'http://localhost:8080/frotas';
   }
 
   public get(id: Number){

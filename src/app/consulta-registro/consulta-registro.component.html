@@ -1,6 +1,21 @@
 <app-navbar></app-navbar>
 <br><br><br><br><br><br>
-<div>
-    
+<div class="row justify-content-center my-5">
+    <div class="consulta">
+        <h4>Título: {{registro.titulo}}</h4>
+        <h5>Data Registro: {{registro.dataRegistro}}</h5>
+        <h5>Descrição: {{registro.descricao}}</h5>
+        <h5>Empresa: {{registro.frota.empresa.nome}}</h5>      
+        <h5>Frota: {{registro.frota.nome}}</h5>
+        <h5>Autor: {{registro.funcionario.nome}} E-mail: {{registro.funcionario.email}}</h5>
+        <h5>Arquivo:</h5>
+        <ul>
+            <li *ngFor="let item of listaArquivo">
+                <a href="{{item.url}}">{{item.name}}</a>
+            </li>
+        </ul>
+        <br>
+        <div class="container"><button (click)="btCancelar()" class="btn">Retornar</button></div>
+    </div>
 </div>
 <app-rodape></app-rodape>
