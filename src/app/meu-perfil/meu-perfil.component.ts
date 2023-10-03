@@ -63,7 +63,7 @@ export class MeuPerfilComponent implements OnInit{
             next: (data) => {
               if(data != null){
                 window.alert('As alterações foram salvas.')
-                this.edtSenha? this.router.navigate(['/']) : this.router.navigate(['/home'])
+                this.finalizar()
               }
               else{ window.alert('Ocorreu um erro')}
             },
@@ -81,7 +81,7 @@ export class MeuPerfilComponent implements OnInit{
             next: (data) => {
               if(data != null){
                 window.alert('As alterações foram salvas.')
-                this.router.navigate(['/home'])
+                this.finalizar()
               }
               else{ window.alert('Ocorreu um erro')}
             },
@@ -131,6 +131,7 @@ export class MeuPerfilComponent implements OnInit{
         this.funcionario_service.updateCliente(this.funcionarioLogado.id, this.funcionario).subscribe({
           next: (data) => {
             if(data != null){
+              this.funcionario_service.setFuncionario(null)
               window.alert('Sua conta foi desativada')
               this.router.navigate(['/'])
             }
@@ -149,6 +150,7 @@ export class MeuPerfilComponent implements OnInit{
         this.funcionario_service.updateInterno(this.funcionarioLogado.id, this.funcionario).subscribe({
           next: (data) => {
             if(data != null){
+              this.funcionario_service.setFuncionario(null)
               window.alert('Sua conta foi desativada')
               this.router.navigate(['/'])
             }
@@ -168,5 +170,31 @@ export class MeuPerfilComponent implements OnInit{
 
   btCancelar() {
     this.router.navigate(['/home'])
+  }
+
+  finalizar(){
+    this.funcionario_service.get(this.funcionarioLogado.id).subscribe({
+      next: data => {
+        if(data != null){
+          if(this.edtSenha){
+            this.funcionario_service.setFuncionario(null)
+            this.router.navigate(['/'])
+          }else{
+            this.funcionario_service.setFuncionario(data)
+            this.router.navigate(['/home'])
+          }
+        }
+        else{
+          window.alert('Ocorreu um erro')
+        }
+      },
+      error: err => {
+        if(err.statusText == 'OK'){                
+          window.alert('Ocorreu um erro\n'+ err.message)                
+        }else{
+          window.alert('Ocorreu um erro de conexão')
+        }        
+      }
+    })
   }
 }

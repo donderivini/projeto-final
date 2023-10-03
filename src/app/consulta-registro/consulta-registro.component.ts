@@ -22,11 +22,11 @@ export class ConsultaRegistroComponent implements OnInit {
     if(this.funionarioService.getFuncionario() != null){
       if(this.registroService.getRegistro() != null){
         this.registro = this.registroService.getRegistro()
-        this.registro.dataRegistro = this.registro.dataRegistro.substring(0,10)
+        this.registro.dataResgistro = this.registro.dataResgistro.substring(0,10)
         this.registroService.getAllArquivos(this.registro.id).subscribe(
           (response) => {this.listaArquivo = response}
         )
-      } else (this.router.navigate(['/home']))
+      } else {this.router.navigate(['/home'])}
     } else (this.router.navigate(['/']))
   }
 
