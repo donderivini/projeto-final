@@ -1,6 +1,6 @@
 # Introdução do ProjetoFinal
 
-Toda parte de do front-end do projeto "Facilita FHR" iniciado no curso Java da Funtec em Ribeirão Preto
+Toda parte do front-end do projeto "Facilita FHR" iniciado no curso Java da Funtec em Ribeirão Preto
 
 ## Estilização
 
