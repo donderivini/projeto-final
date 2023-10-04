@@ -5,7 +5,7 @@
     align-items: center;
     font-weight: bold;
     padding: 20px;
-    width: 70%;
+    width: 40%;
     min-width: 500px;
     color:#fcb903fd;
     font-weight: bold;
@@ -18,4 +18,17 @@
     border: none;
     padding: 10px 20px;
     color: white;
+}
+
+.content-span {
+    color: whitesmoke;
+    border-radius: 5%;
+    margin-left: 5px;
+    padding: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.link {
+    color: #fcb903fd;
 }
