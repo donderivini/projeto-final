@@ -2,11 +2,14 @@
 .cadastrar{
     background-color: rgba(72, 61, 139, 0.8);
     border-radius: 2%;
-    border: 3px solid #FFD700;
+    border: 3px solid #fcb903fd;
     align-items: center;
     font-weight: bold;
     padding: 20px;
-    min-width: 300px;
+    width: 70%;
+    min-width: 500px;
+    color:#fcb903fd;
+    font-weight: bold;    
 }
 
 .cadastrar input{
@@ -25,5 +28,12 @@
     padding: 10px 20px;
     color: white;
     
+}
+
+@media only screen and (max-width: 500px) {
+    .cadastrar{
+        width: 95%;
+        min-width: 192px;
+    }
 }
 

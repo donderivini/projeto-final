@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit{
           )
         }
         else{
-          this.funcionarioService.findAllRegistros(this.funcionario.id).subscribe(
+          this.registroService.getAll().subscribe(
             (response) => {
               response.forEach((value)=>{              
                 value.dataResgistro = value.dataResgistro.substring(0,10)

@@ -1,14 +1,5 @@
 <app-navbar></app-navbar>
-<br><br><br><br><br><br>
 <div class="row justify-content-center my-5">
-    <!-- <div class="consulta">
-        <h4>Título: {{registro.titulo}}</h4>
-        <h5>Data Registro:{{registro.dataResgistro}}</h5>
-        <h5>Descrição: {{registro.descricao}}</h5>
-        <h5>Empresa: {{registro.frota.empresa.nome}}</h5>      
-        <h5>Frota: {{registro.frota.nome}}</h5>
-        <h5>Autor: {{registro.funcionario.nome}} E-mail: {{registro.funcionario.email}}</h5>
-        <h5>Arquivo:</h5> -->
         <div class="consulta">
         <h4>Título: <span class="content-span">{{registro.titulo}}</span></h4>
         <h5>Data Registro: <span class="content-span">{{registro.dataResgistro}}</span></h5>
@@ -16,9 +7,9 @@
         <h5>Empresa: <span class="content-span">{{registro.frota.empresa.nome}}</span></h5>
         <h5>Frota: <span class="content-span">{{registro.frota.nome}}</span></h5>
         <h5>Autor: <span class="content-span">{{registro.funcionario.nome}}</span> E-mail: <span class="content-span">{{registro.funcionario.email}}</span></h5>
-        <h5>Arquivo:</h5>
-        <ul>
-            <li *ngFor="let item of listaArquivo" class="link">
+        <h5>Arquivos:</h5>
+        <ul class="list-group list-group-flush">
+            <li *ngFor="let item of listaArquivo" class="link list-group-item">
                 <a href="{{item.url}}">{{item.name}}</a>
             </li>
         </ul>

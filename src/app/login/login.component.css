@@ -51,3 +51,10 @@
 .login button:hover {
     background-color: #fcb903;
 }
+
+@media only screen and (max-width: 316px) {
+    .corpo{
+        width: 95%;
+        min-width: 192px;
+    }
+}

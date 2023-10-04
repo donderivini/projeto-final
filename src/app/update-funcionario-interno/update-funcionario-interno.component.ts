@@ -25,7 +25,7 @@ export class UpdateFuncionarioInternoComponent implements OnInit {
         this.funcionario_service.findAllInterno().subscribe(
           (response) => {
             response.forEach((item) => {
-              if(item.ativo){
+              if(item.ativo && item.id != this.funcionario_service.getFuncionario().id){
                 this.listaInternos.push(item)
               }
             })

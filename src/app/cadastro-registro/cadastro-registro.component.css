@@ -5,9 +5,10 @@
     align-items: center;
     font-weight: bold;
     padding: 20px;
-    width: 500px;
+    width: 70%;
+    min-width: 500px;
     color:#fcb903fd;
-    font-weight: bold;
+    font-weight: bold;    
 }
 .btn {
     text-align:center;
@@ -17,5 +18,12 @@
     padding: 10px 20px;
     color: white;
     
+}
+
+@media only screen and (max-width: 500px) {
+    .formulario{
+        width: 95%;
+        min-width: 192px;
+    }
 }
 

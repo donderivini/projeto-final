@@ -6,7 +6,10 @@
     align-items: center;
     font-weight: bold;
     padding: 20px;
+    width: 70%;
     min-width: 500px;
+    color:#fcb903fd;
+    font-weight: bold;    
 }
 
 .cadastrar input{
@@ -27,3 +30,9 @@
     
 }
 
+@media only screen and (max-width: 500px) {
+    .cadastrar{
+        width: 95%;
+        min-width: 192px;
+    }
+}

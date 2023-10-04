@@ -1,8 +1,7 @@
 <app-navbar></app-navbar>
 <br><br><br><br><br>
-<div class="container d-flex flex-column justify-content-center align-items-center">
-    <div class="corpo">
-     
+<div class="row justify-content-center my-5">
+    
       <form class="cadastrar form-group mb-4">
         <label for="inputLogin">Login</label>
         <select class="form-control" id="inputLogin" name="cargo" [(ngModel)]="idFuncionario" (change)="setFuncionario()">
@@ -23,10 +22,9 @@
         </div>
         <div class="d-grid gap-2 mt-3">
           <button (click)="btAtualizar()" type="submit" class="btn" >Atualizar</button>
-          <button (click)="btDeletar()" type="submit" class="btn" >Deletar usuário</button>
+          <button (click)="btDeletar()" type="submit" class="btn" style="background-color: red;" >Deletar usuário</button>
           <button (click)="btCancelar()" class="btn" style="background-color: rgb(44, 35, 102);">Cancelar</button>
         </div>
       </form>
-    </div>
   </div>
 <app-rodape></app-rodape>
