@@ -22,7 +22,12 @@ export class ConsultaRegistroComponent implements OnInit {
     if(this.funionarioService.getFuncionario() != null){
       if(this.registroService.getRegistro() != null){
         this.registro = this.registroService.getRegistro()
-        this.registro.dataResgistro = this.registro.dataResgistro.substring(0,10)
+        let dia = this.registro.dataResgistro.substring(8,10)
+        let mes = this.registro.dataResgistro.substring(5,7)
+        let ano = this.registro.dataResgistro.substring(0,4)
+        let hora = this.registro.dataResgistro.substring(11,13)
+        let min = this.registro.dataResgistro.substring(14,16)
+        this.registro.dataResgistro = dia + '/' + mes +'/' + ano + ' - ' + hora + 'h' + min
         this.registroService.getAllArquivos(this.registro.id).subscribe(
           (response) => {this.listaArquivo = response}
         )

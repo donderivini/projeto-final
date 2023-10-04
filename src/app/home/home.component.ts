@@ -52,7 +52,10 @@ export class HomeComponent implements OnInit{
           this.registroService.getAll().subscribe(
             (response) => {
               response.forEach((value)=>{
-                value.dataResgistro = value.dataResgistro.substring(0,10)
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano 
               })
               this.listaRegistros = response
             }
@@ -61,8 +64,11 @@ export class HomeComponent implements OnInit{
         else{
           this.registroService.getAll().subscribe(
             (response) => {
-              response.forEach((value)=>{              
-                value.dataResgistro = value.dataResgistro.substring(0,10)
+              response.forEach((value)=>{    
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano
               })
               this.listaRegistros = response
             }
@@ -80,7 +86,10 @@ export class HomeComponent implements OnInit{
         this.empresaService.findAllRegistros(this.idEmpresa).subscribe(
           (response) => {
             response.forEach((value)=>{
-              value.dataResgistro = value.dataResgistro.substring(0,10)            
+              let dia = value.dataResgistro.substring(8,10)
+              let mes = value.dataResgistro.substring(5,7)
+              let ano = value.dataResgistro.substring(0,4)
+              value.dataResgistro = dia + '/' + mes +'/' + ano      
             })
             this.listaRegistros = response
           }
@@ -113,7 +122,10 @@ export class HomeComponent implements OnInit{
           this.registroService.getAll().subscribe(
             (response) => {
               response.forEach((value)=>{
-                value.dataResgistro = value.dataResgistro.substring(0,10)                
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano               
               })
               this.listaRegistros = response
             }
@@ -123,7 +135,10 @@ export class HomeComponent implements OnInit{
           this.registroService.getAllByCategoria(this.categoria).subscribe(
             (response) => {
               response.forEach((value)=>{
-                value.dataResgistro = value.dataResgistro.substring(0,10)                
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano                
               })
               this.listaRegistros = response
             }
@@ -135,7 +150,10 @@ export class HomeComponent implements OnInit{
           this.funcionarioService.findAllRegistros(this.funcionario.id).subscribe(
             (response) => {
               response.forEach((value)=>{
-                value.dataResgistro = value.dataResgistro.substring(0,10)                
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano                
               })
               this.listaRegistros = response
             }
@@ -145,7 +163,10 @@ export class HomeComponent implements OnInit{
           this.funcionarioService.findAllRegistrosByCategoria(this.funcionario.id, this.categoria).subscribe(
             (response) => {
               response.forEach((value)=>{
-                value.dataResgistro = value.dataResgistro.substring(0,10)                
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano                
               })
               this.listaRegistros = response
             }
@@ -159,7 +180,10 @@ export class HomeComponent implements OnInit{
           this.empresaService.findAllRegistros(this.idEmpresa).subscribe(
             (response) => {
               response.forEach((value)=>{
-                value.dataResgistro = value.dataResgistro.substring(0,10)                
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano                
               })
               this.listaRegistros = response
             }
@@ -169,7 +193,10 @@ export class HomeComponent implements OnInit{
           this.empresaService.findAllRegistrosByCategoria(this.idEmpresa,this.categoria).subscribe(
             (response) => {
               response.forEach((value)=>{
-                value.dataResgistro = value.dataResgistro.substring(0,10)                
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano                
               })
               this.listaRegistros = response
             }
@@ -181,7 +208,10 @@ export class HomeComponent implements OnInit{
           this.frotaService.getAllRegistros(this.idFrota).subscribe(
             (response) => {
               response.forEach((value)=>{
-                value.dataResgistro = value.dataResgistro.substring(0,10)                
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano               
               })
               this.listaRegistros = response
             }
@@ -191,7 +221,10 @@ export class HomeComponent implements OnInit{
           this.frotaService.getAllRegistrosByCategoria(this.idFrota,this.categoria).subscribe(
             (response) => {
               response.forEach((value)=>{
-                value.dataResgistro = value.dataResgistro.substring(0,10)                
+                let dia = value.dataResgistro.substring(8,10)
+                let mes = value.dataResgistro.substring(5,7)
+                let ano = value.dataResgistro.substring(0,4)
+                value.dataResgistro = dia + '/' + mes +'/' + ano                
               })
               this.listaRegistros = response
             }
